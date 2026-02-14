@@ -60,7 +60,7 @@ function Layout({ children }) {
         </div>
       </header>
       {children}
-      <footer className={styles.footer}> footer </footer>
+      <footer className={styles.footer}>  </footer>
     </>
   );
 }
