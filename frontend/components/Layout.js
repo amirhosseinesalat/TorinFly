@@ -2,11 +2,19 @@ import styles from "../styles/Layout.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Authmodal from "../components/Authmodal";
 
 function Layout({ children }) {
   const [showModal, setShowModal] = useState(false);
+  const [phone, setPhone] = useState(null);
+
+  useEffect(() => {
+    const savedPhone = localStorage.getItem("phone");
+    if (savedPhone) {
+      setPhone(savedPhone);
+    }
+  }, []);
 
   return (
     <>
@@ -56,12 +64,19 @@ function Layout({ children }) {
           </ul>
         </div>
         <div className={styles.left}>
-          <button className={styles.button} onClick={() => setShowModal(true)}>
-            <h3>
-              <FaUser className={styles.icon} />
-              ورود | ثبت نام
-            </h3>
-          </button>
+          {phone ? (
+            <span className={styles.phoneNumber}>{phone}</span>
+          ) : (
+            <button
+              className={styles.button}
+              onClick={() => setShowModal(true)}
+            >
+              <h3>
+                <FaUser className={styles.icon} />
+                ورود | ثبت نام
+              </h3>
+            </button>
+          )}
         </div>
       </header>
       {showModal && <Authmodal onClose={() => setShowModal(false)} />}

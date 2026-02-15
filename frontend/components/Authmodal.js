@@ -45,7 +45,8 @@ function AuthModal({ onClose }) {
       console.log(res.data);
 
       localStorage.setItem("token", res.data.token);
-
+      localStorage.setItem("phone", userPhone);
+      window.dispatchEvent(new Event("storage"));
       onClose();
     } catch (error) {
       console.log(error);
