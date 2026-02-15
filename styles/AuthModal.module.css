@@ -1,0 +1,42 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: 440px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal input {
+  height: 45px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+}
+
+.modal button {
+  height: 45px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.modal h2 {
+  text-align: center;
+}
+.modal label {
+  font-size: 14px;
+  margin-top: 35px;
+}

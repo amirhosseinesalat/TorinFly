@@ -2,7 +2,12 @@ import styles from "../../styles/Layout.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa6";
+import { useState } from "react";
+import Authmodal from "../layout/Authmodal";
+
 function Layout({ children }) {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <header className={styles.header}>
@@ -51,7 +56,7 @@ function Layout({ children }) {
           </ul>
         </div>
         <div className={styles.left}>
-          <button className={styles.button}>
+          <button className={styles.button} onClick={() => setShowModal(true)}>
             <h3>
               <FaUser className={styles.icon} />
               ورود | ثبت نام
@@ -59,6 +64,8 @@ function Layout({ children }) {
           </button>
         </div>
       </header>
+      {showModal && <Authmodal onClose={() => setShowModal(false)} />}
+
       {children}
       <footer>
         <hr style={{ width: "850px", marginRight: "288px" }}></hr>{" "}
