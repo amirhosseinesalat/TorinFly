@@ -20,7 +20,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  gap: 20px; 
+  gap: 20px;
   position: relative;
 }
 
@@ -28,13 +28,12 @@
   text-align: center;
   color: #28a745;
   font-size: 26px;
-  margin: 0;
+  margin: 0 0 50px 0;
 }
 
 .modal label {
   font-size: 14px;
   color: #333;
-  padding-top: 10px;
 }
 
 .modal input {
@@ -49,7 +48,6 @@
 .modal input:focus {
   border-color: #28a745;
 }
-
 
 .modal button {
   width: 100%;
@@ -73,4 +71,25 @@
   color: red;
   font-size: 14px;
   margin: 0;
+}
+.otpContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.otpInput {
+  width: 50px;
+  height: 60px;
+  font-size: 24px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.otpInput:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
 }
