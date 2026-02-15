@@ -43,3 +43,49 @@
   right: 10px;
   top: 10px;
 }
+.container {
+  width: 100%;
+  height: 300px;
+  box-shadow: 0 1px 4px 0 #e6e6e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.torinfly {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  margin-right: 15px;
+}
+.torinfly ul {
+  padding-top: 25px;
+  list-style: none;
+}
+.torinfly .first {
+  font-weight: bolder;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+.paragraph {
+  text-align: center;
+  font-size: 15px;
+  display: block;
+}
+
+.leftsection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.phone {
+  font-size: 13px;
+}
+.logos {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-left: 20px;
+}
