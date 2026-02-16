@@ -29,6 +29,7 @@ function AuthModal({ onClose }) {
       setStep("otp");
     } catch (error) {
       console.log(error);
+      alert("کد تایید اشتباه است!");
     }
   };
   const handleVerifyOtp = async () => {
@@ -47,9 +48,12 @@ function AuthModal({ onClose }) {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("phone", userPhone);
       window.dispatchEvent(new Event("storage"));
+      window.location.reload(false);
       onClose();
     } catch (error) {
       console.log(error);
+      const message = error.response?.data?.message || "کد تایید اشتباه است";
+      alert(message);
     }
   };
 

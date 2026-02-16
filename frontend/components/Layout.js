@@ -4,11 +4,13 @@ import Link from "next/link";
 import { FaUser } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import Authmodal from "../components/Authmodal";
-
+import { IoIosArrowDown } from "react-icons/io";
+import { FaUserCircle } from "react-icons/fa";
+import { CiLogin } from "react-icons/ci";
 function Layout({ children }) {
   const [showModal, setShowModal] = useState(false);
   const [phone, setPhone] = useState(null);
-
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const savedPhone = localStorage.getItem("phone");
     if (savedPhone) {
@@ -25,6 +27,7 @@ function Layout({ children }) {
           width={180}
           height={100}
           alt="torinfly"
+          priority
         />
         <div className={styles.menu}>
           <ul>
@@ -65,7 +68,33 @@ function Layout({ children }) {
         </div>
         <div className={styles.left}>
           {phone ? (
-            <span className={styles.phoneNumber}>{phone}</span>
+            <span className={styles.phoneNumber}>
+              <FaUser style={{ fontSize: "12px" }} />
+              {phone}
+
+              <IoIosArrowDown
+                onClick={() => setOpen((prev) => !prev)}
+                style={{ fontSize: "15px", cursor: "pointer" }}
+              />
+
+              {open && (
+                <ul className={styles.menudrop}>
+                  <li className={styles.dropLi}>
+                    <FaUserCircle
+                      style={{ marginTop: "10px", display: "block" }}
+                    />
+                    {phone}
+                  </li>
+                  <li>
+                    <FaUser /> اطلاعات حساب کاربری
+                  </li>
+                  <li>
+                    <CiLogin />
+                    خروج از حساب کاربری
+                  </li>
+                </ul>
+              )}
+            </span>
           ) : (
             <button
               className={styles.button}
