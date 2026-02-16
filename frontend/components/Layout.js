@@ -80,12 +80,10 @@ function Layout({ children }) {
               {open && (
                 <ul className={styles.menudrop}>
                   <li className={styles.dropLi}>
-                    <FaUserCircle
-                      style={{ marginTop: "10px", display: "block" }}
-                    />
+                    <FaUserCircle />
                     {phone}
                   </li>
-                  <li>
+                  <li style={{color:"#10411B"}}>
                     <FaUser /> اطلاعات حساب کاربری
                   </li>
                   <li>
