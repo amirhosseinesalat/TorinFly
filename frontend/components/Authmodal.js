@@ -5,12 +5,14 @@ import schema from "../modules/LoginForm";
 import styles from "../styles/AuthModal.module.css";
 import { IoClose } from "react-icons/io5";
 import axios from "axios";
+import { useRef } from "react";
+
 function AuthModal({ onClose }) {
   const [step, setStep] = useState("phone");
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [userPhone, setUserPhone] = useState("");
-
+  const inputRefs = useRef([]);
   const {
     register,
     handleSubmit,
@@ -59,18 +61,27 @@ function AuthModal({ onClose }) {
 
   const handleOtpChange = (e, idx) => {
     const val = e.target.value.replace(/[^0-9]/g, "");
+
+    if (!val) return;
+
     const newOtp = [...otp];
     newOtp[idx] = val;
     setOtp(newOtp);
 
-    if (val && idx < otp.length - 1) {
-      setActiveIndex(idx + 1);
+    if (idx < otp.length - 1) {
+      inputRefs.current[idx + 1].focus();
     }
   };
 
   const handleOtpBackspace = (e, idx) => {
-    if (e.key === "Backspace" && !otp[idx] && idx > 0) {
-      setActiveIndex(idx - 1);
+    if (e.key === "Backspace") {
+      if (otp[idx]) {
+        const newOtp = [...otp];
+        newOtp[idx] = "";
+        setOtp(newOtp);
+      } else if (idx > 0) {
+        inputRefs.current[idx - 1].focus();
+      }
     }
   };
 
@@ -113,6 +124,7 @@ function AuthModal({ onClose }) {
                   type="text"
                   maxLength={1}
                   value={num}
+                  ref={(el) => (inputRefs.current[idx] = el)}
                   onChange={(e) => handleOtpChange(e, idx)}
                   onKeyDown={(e) => handleOtpBackspace(e, idx)}
                   className={styles.otpInput}

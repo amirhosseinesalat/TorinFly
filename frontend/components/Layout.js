@@ -17,7 +17,11 @@ function Layout({ children }) {
       setPhone(savedPhone);
     }
   }, []);
+  const deleteHandler = () => {
+    localStorage.removeItem("phone");
 
+    window.location.reload(false);
+  };
   return (
     <>
       <header className={styles.header}>
@@ -62,7 +66,7 @@ function Layout({ children }) {
                 style={{ "text-decoration": "none", color: "#282828" }}
               >
                 تماس با ما
-              </Link>{" "}
+              </Link>
             </li>
           </ul>
         </div>
@@ -83,10 +87,10 @@ function Layout({ children }) {
                     <FaUserCircle />
                     {phone}
                   </li>
-                  <li style={{color:"#10411B"}}>
+                  <li style={{ color: "#10411B" }}>
                     <FaUser /> اطلاعات حساب کاربری
                   </li>
-                  <li>
+                  <li onClick={deleteHandler}>
                     <CiLogin />
                     خروج از حساب کاربری
                   </li>
@@ -135,6 +139,7 @@ function Layout({ children }) {
               width={150}
               height={90}
               alt="Logo"
+              fetchPriority="low"
             />
             <h3 className={styles.phone}>تلفن پشتیبانی:8574-021</h3>
             <div className={styles.logos}>
@@ -143,30 +148,35 @@ function Layout({ children }) {
                 width={65}
                 height={65}
                 alt="Logo"
+                fetchPriority="low"
               />
               <Image
                 src="/images/samandehi-6e2b448a.png"
                 width={65}
                 height={65}
                 alt="Logo"
+                fetchPriority="low"
               />
               <Image
                 src="/images/passenger-rights-48368f81 1.png"
                 width={65}
                 height={65}
                 alt="Logo"
+                fetchPriority="low"
               />
               <Image
                 src="/images/ecunion-35c3c933.png"
                 width={65}
                 height={65}
                 alt="Logo"
+                fetchPriority="low"
               />
               <Image
                 src="/images/aira-682b7c43.png"
                 width={65}
                 height={65}
                 alt="Logo"
+                fetchPriority="low"
               />
             </div>
           </div>
