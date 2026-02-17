@@ -1,6 +1,7 @@
+"use client";
 import styles from "../styles/ServerError.module.css";
 import Image from "next/image";
-function servererror() {
+function ServerError() {
   return (
     <div className={styles.container}>
       <div className={styles.right}>
@@ -19,4 +20,4 @@ function servererror() {
   );
 }
 
-export default servererror;
+export default ServerError;
