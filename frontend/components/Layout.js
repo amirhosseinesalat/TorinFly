@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa6";
 import { useState, useEffect } from "react";
-import Authmodal from "../components/Authmodal";
+import Authmodal from "../modules/Authmodal";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { CiLogin } from "react-icons/ci";
+import { IoIosMenu } from "react-icons/io";
 function Layout({ children }) {
   const [showModal, setShowModal] = useState(false);
   const [phone, setPhone] = useState(null);
@@ -20,7 +21,6 @@ function Layout({ children }) {
   }, []);
   const deleteHandler = () => {
     localStorage.removeItem("phone");
-
     window.location.reload(false);
   };
   return (
