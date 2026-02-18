@@ -13,6 +13,7 @@ function Layout({ children }) {
   const [showModal, setShowModal] = useState(false);
   const [phone, setPhone] = useState(null);
   const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   useEffect(() => {
     const savedPhone = localStorage.getItem("phone");
     if (savedPhone) {
@@ -35,11 +36,60 @@ function Layout({ children }) {
           priority
         />
         <div className={styles.menu}>
+          <IoIosMenu
+            className={styles.hambergerMenu}
+            onClick={() => setOpenMenu((prev) => !prev)}
+          />
+          {openMenu && (
+            <>
+              <div
+                className={styles.backdrop}
+                onClick={() => setOpenMenu(false)}
+              ></div>
+              <div className={styles.mobileMenu}>
+                <ul>
+                  <li>
+                    <Link
+                      href="/"
+                      style={{ textDecoration: "none", color: "#282828" }}
+                    >
+                      صفحه اصلی
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services"
+                      style={{ textDecoration: "none", color: "#282828" }}
+                    >
+                      خدمات گردشگری{" "}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/about-us"
+                      style={{ textDecoration: "none", color: "#282828" }}
+                    >
+                      درباره ما
+                    </Link>
+                  </li>
+                  <li>
+                    {" "}
+                    <Link
+                      href="contact-us"
+                      style={{ textDecoration: "none", color: "#282828" }}
+                    >
+                      تماس با ما
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </>
+          )}
           <ul>
             <li>
               <Link
                 href="/"
-                style={{ "text-decoration": "none", color: "#282828" }}
+                style={{ textDecoration: "none", color: "#282828" }}
               >
                 صفحه اصلی
               </Link>
@@ -47,7 +97,7 @@ function Layout({ children }) {
             <li>
               <Link
                 href="/services"
-                style={{ "text-decoration": "none", color: "#282828" }}
+                style={{ textDecoration: "none", color: "#282828" }}
               >
                 خدمات گردشگری{" "}
               </Link>
@@ -55,7 +105,7 @@ function Layout({ children }) {
             <li>
               <Link
                 href="/about-us"
-                style={{ "text-decoration": "none", color: "#282828" }}
+                style={{ textDecoration: "none", color: "#282828" }}
               >
                 درباره ما
               </Link>
@@ -64,7 +114,7 @@ function Layout({ children }) {
               {" "}
               <Link
                 href="contact-us"
-                style={{ "text-decoration": "none", color: "#282828" }}
+                style={{ textDecoration: "none", color: "#282828" }}
               >
                 تماس با ما
               </Link>
@@ -115,7 +165,9 @@ function Layout({ children }) {
 
       {children}
       <footer>
-        <hr style={{ width: "850px", marginRight: "288px" }}></hr>{" "}
+        <hr className={styles.footerHr} />
+        <hr className={styles.footerHr} />
+
         <div className={styles.container}>
           <div className={styles.torinfly}>
             <ul>
