@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import schema from "./LoginForm";
+import schema from "../utils/LoginForm";
 import styles from "../styles/AuthModal.module.css";
 import { IoClose } from "react-icons/io5";
 import axios from "axios";

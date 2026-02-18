@@ -9,11 +9,16 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { CiLogin } from "react-icons/ci";
 import { IoIosMenu } from "react-icons/io";
+import { IoMdHome } from "react-icons/io";
+import { CiAirportSign1 } from "react-icons/ci";
+import { IoIosCall } from "react-icons/io";
+import { MdOutlineRecordVoiceOver } from "react-icons/md";
 function Layout({ children }) {
   const [showModal, setShowModal] = useState(false);
   const [phone, setPhone] = useState(null);
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const [selected, setSelected] = useState("home");
   useEffect(() => {
     const savedPhone = localStorage.getItem("phone");
     if (savedPhone) {
@@ -46,38 +51,46 @@ function Layout({ children }) {
                 className={styles.backdrop}
                 onClick={() => setOpenMenu(false)}
               ></div>
-              <div className={styles.mobileMenu}>
+              <div
+                className={`${styles.mobileMenu} ${
+                  openMenu ? styles.open : ""
+                }`}
+              >
                 <ul>
-                  <li>
-                    <Link
-                      href="/"
-                      style={{ textDecoration: "none", color: "#282828" }}
-                    >
+                  <li
+                    onClick={() => setSelected("home")}
+                    className={selected === "home" ? styles.active : ""}
+                  >
+                    <Link href="/">
+                      <IoMdHome />
                       صفحه اصلی
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/services"
-                      style={{ textDecoration: "none", color: "#282828" }}
-                    >
+                  <li
+                    onClick={() => setSelected("services")}
+                    className={selected === "services" ? styles.active : ""}
+                  >
+                    <Link href="/services">
+                      <CiAirportSign1 />
                       خدمات گردشگری{" "}
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/about-us"
-                      style={{ textDecoration: "none", color: "#282828" }}
-                    >
+                  <li
+                    onClick={() => setSelected("about")}
+                    className={selected === "about" ? styles.active : ""}
+                  >
+                    <Link href="/about-us">
+                      <MdOutlineRecordVoiceOver />
                       درباره ما
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => setSelected("contact")}
+                    className={selected === "contact" ? styles.active : ""}
+                  >
                     {" "}
-                    <Link
-                      href="contact-us"
-                      style={{ textDecoration: "none", color: "#282828" }}
-                    >
+                    <Link href="/contact-us">
+                      <IoIosCall />
                       تماس با ما
                     </Link>
                   </li>
@@ -85,39 +98,31 @@ function Layout({ children }) {
               </div>
             </>
           )}
-          <ul>
-            <li>
-              <Link
-                href="/"
-                style={{ textDecoration: "none", color: "#282828" }}
-              >
-                صفحه اصلی
-              </Link>
+          <ul className={styles.desktopMenu}>
+            <li
+              onClick={() => setSelected("home")}
+              className={selected === "home" ? styles.active : ""}
+            >
+              <Link href="/">صفحه اصلی</Link>
             </li>
-            <li>
-              <Link
-                href="/services"
-                style={{ textDecoration: "none", color: "#282828" }}
-              >
-                خدمات گردشگری{" "}
-              </Link>
+            <li
+              onClick={() => setSelected("services")}
+              className={selected === "services" ? styles.active : ""}
+            >
+              <Link href="/services">خدمات گردشگری </Link>
             </li>
-            <li>
-              <Link
-                href="/about-us"
-                style={{ textDecoration: "none", color: "#282828" }}
-              >
-                درباره ما
-              </Link>
+            <li
+              onClick={() => setSelected("about")}
+              className={selected === "about" ? styles.active : ""}
+            >
+              <Link href="/about-us">درباره ما</Link>
             </li>
-            <li>
+            <li
+              onClick={() => setSelected("contact")}
+              className={selected === "contact" ? styles.active : ""}
+            >
               {" "}
-              <Link
-                href="contact-us"
-                style={{ textDecoration: "none", color: "#282828" }}
-              >
-                تماس با ما
-              </Link>
+              <Link href="contact-us">تماس با ما</Link>
             </li>
           </ul>
         </div>

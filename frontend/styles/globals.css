@@ -4,6 +4,11 @@
   box-sizing: border-box;
   font-family: "Yekan", sans-serif;
 }
+html,
+body {
+  overflow-x: hidden;
+}
+
 @font-face {
   font-family: "Yekan";
   src: url("/fonts/YekanBakh-Regular.ttf") format("truetype");
