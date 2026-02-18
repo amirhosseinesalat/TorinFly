@@ -13,6 +13,7 @@ import { IoMdHome } from "react-icons/io";
 import { CiAirportSign1 } from "react-icons/ci";
 import { IoIosCall } from "react-icons/io";
 import { MdOutlineRecordVoiceOver } from "react-icons/md";
+import { FaSignInAlt } from "react-icons/fa";
 function Layout({ children }) {
   const [showModal, setShowModal] = useState(false);
   const [phone, setPhone] = useState(null);
@@ -154,15 +155,21 @@ function Layout({ children }) {
               )}
             </span>
           ) : (
-            <button
-              className={styles.button}
-              onClick={() => setShowModal(true)}
-            >
-              <h3>
-                <FaUser className={styles.icon} />
-                ورود | ثبت نام
-              </h3>
-            </button>
+            <>
+              <FaSignInAlt
+                className={styles.login}
+                onClick={() => setShowModal(true)}
+              />
+              <button
+                className={styles.button}
+                onClick={() => setShowModal(true)}
+              >
+                <h3>
+                  <FaUser className={styles.icon} />
+                  ورود | ثبت نام
+                </h3>
+              </button>
+            </>
           )}
         </div>
       </header>
@@ -170,7 +177,6 @@ function Layout({ children }) {
 
       {children}
       <footer>
-        <hr className={styles.footerHr} />
         <hr className={styles.footerHr} />
 
         <div className={styles.container}>

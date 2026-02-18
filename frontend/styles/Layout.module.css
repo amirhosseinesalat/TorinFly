@@ -198,6 +198,9 @@
 .active a {
   color: #28a745;
 }
+.login {
+  display: none;
+}
 
 @media (max-width: 720px) {
   .header {
@@ -243,6 +246,59 @@
     display: none;
   }
   .img {
+    display: none;
+  }
+  .container {
+    flex-direction: column;
+    height: auto;
+    padding: 30px 15px;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .torinfly {
+    flex-direction: row;
+    gap: 30px;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .torinfly ul {
+    padding-top: 0;
+  }
+
+  .leftsection {
+    gap: 10px;
+  }
+
+  .logos {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-left: 0;
+  }
+
+  .logos img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .phone {
+    font-size: 14px;
+  }
+
+  .paragraph {
+    font-size: 13px;
+    padding: 15px;
+  }
+  .login {
+    display: inline;
+    margin-left: 10px;
+    font-size: 28px;
+    color: #28a745;
+  }
+  .button {
     display: none;
   }
 }
