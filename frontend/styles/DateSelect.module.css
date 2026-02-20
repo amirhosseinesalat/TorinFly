@@ -35,22 +35,27 @@
 @media (min-width: 740px) {
   .date {
     width: 25%;
-    margin-top: 30px;
+    margin: 0;
   }
 
   .date input {
     width: 100%;
+    border: none;
+
+    background: transparent;
   }
 
   .searchButton {
-    width: 15%;
-    margin-top: 30px;
+    width: 20%;
+    margin: 0;
   }
 
   .Button {
     width: 100%;
+    height: 50px;
+    border-radius: 16px;
   }
-  .dateIcon{
+  .dateIcon {
     right: 15%;
   }
 }

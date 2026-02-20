@@ -28,16 +28,23 @@
 @media (min-width: 740px) {
   .inputLoc {
     flex-direction: row;
-    margin-right: 0;
-    width: 60%;
+    align-items: center;
+    width: 50%;
+    margin: 0;
+    gap: 0;
   }
 
   .inputLoc input {
     width: 100%;
+    border: none;
+    border-left: 2px solid rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: transparent;
   }
 
   .icon {
-    right: 5%;
+    right: 10px;
   }
 
   .icon2 {
