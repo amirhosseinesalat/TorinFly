@@ -92,6 +92,7 @@
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
+  border: 1px dashed rgb(152, 152, 152);
 }
 
 .phoneNumber {
