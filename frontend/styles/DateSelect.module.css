@@ -41,8 +41,9 @@
   .date input {
     width: 100%;
     border: none;
-
     background: transparent;
+    outline: none;
+    font-size: 17px;
   }
 
   .searchButton {

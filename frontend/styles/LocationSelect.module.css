@@ -41,6 +41,8 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     background: transparent;
+    outline: none;
+    font-size: 17px;
   }
 
   .icon {
