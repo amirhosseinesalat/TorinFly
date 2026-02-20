@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Authmodal from "../modules/Authmodal";
 import styles from "../styles/Layout.module.css";
-import Image from "next/image";
+import Image from "next/Image";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";

@@ -1,5 +1,5 @@
 import styles from "../styles/Layout.module.css";
-import Image from "next/image";
+import Image from "next/Image";
 function Footer() {
   return (
     <>
