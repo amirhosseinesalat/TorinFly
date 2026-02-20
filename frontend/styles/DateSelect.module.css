@@ -32,3 +32,25 @@
   font-size: 18px;
   cursor: pointer;
 }
+@media (min-width: 740px) {
+  .date {
+    width: 25%;
+    margin-top: 30px;
+  }
+
+  .date input {
+    width: 100%;
+  }
+
+  .searchButton {
+    width: 15%;
+    margin-top: 30px;
+  }
+
+  .Button {
+    width: 100%;
+  }
+  .dateIcon{
+    right: 15%;
+  }
+}

@@ -21,7 +21,26 @@
 }
 .icon2 {
   position: absolute;
-  right: 56%;
+  right: 53%;
   font-size: 14px;
   top: 35%;
+}
+@media (min-width: 740px) {
+  .inputLoc {
+    flex-direction: row;
+    margin-right: 0;
+    width: 60%;
+  }
+
+  .inputLoc input {
+    width: 100%;
+  }
+
+  .icon {
+    right: 5%;
+  }
+
+  .icon2 {
+    right: 55%;
+  }
 }
