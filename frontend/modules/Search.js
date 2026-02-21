@@ -23,8 +23,8 @@ async function Search() {
     <>
       <div className={styles.title}>
         <h2>
-          <span className={styles.span}>تورینو</span> برگزار کننده بهترین تور
-          های داخلی و خارجی
+          <span className={styles.span}>تورین فلای</span> برگزار کننده بهترین
+          تور های داخلی و خارجی
         </h2>
       </div>
       <div className={styles.container}>
