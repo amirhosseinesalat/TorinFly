@@ -11,7 +11,14 @@ function LocationSelect({ origins, destinations }) {
     <div className={styles.inputLoc}>
       <div className={styles.selectWrapper}>
         <CiLocationOn className={styles.icon} />
-        <button onClick={() => setOpenOrigin((prev) => !prev) }>مبدا</button>
+        <button
+          onClick={() => {
+            setOpenOrigin((prev) => !prev);
+            setOpenDestination(false);
+          }}
+        >
+          مبدا
+        </button>
 
         {openOrigin && (
           <ul className={styles.menudrop}>
@@ -28,7 +35,12 @@ function LocationSelect({ origins, destinations }) {
 
       <div className={styles.selectWrapper}>
         <RiPinDistanceFill className={styles.icon2} />
-        <button onClick={() => setOpenDestination((prev) => !prev)}>
+        <button
+          onClick={() => {
+            setOpenDestination((prev) => !prev);
+            setOpenOrigin(false);
+          }}
+        >
           مقصد
         </button>
 
