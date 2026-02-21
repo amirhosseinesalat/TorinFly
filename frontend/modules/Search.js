@@ -2,7 +2,18 @@ import styles from "../styles/Search.module.css";
 
 import LocationSelect from "./LocationSelect";
 import DateSelect from "./DateSelect";
-function Search() {
+async function Search() {
+  const res = await fetch("http://localhost:6500/tour", {
+    next: { revalidate: 60 },
+  });
+  const data = await res.json();
+  const origins = data.map((item) => item.origin);
+  const filter = origins.reduce((acc, cur) => {
+    const found = acc.find((a) => a.id === cur.id);
+    if (!found) acc.push(cur);
+    return acc;
+  }, []);
+  
   return (
     <>
       <div className={styles.title}>
@@ -12,7 +23,7 @@ function Search() {
         </h2>
       </div>
       <div className={styles.container}>
-        <LocationSelect />
+        <LocationSelect origins={filter} />
         <DateSelect />
       </div>
     </>

@@ -5,6 +5,7 @@
   gap: 15px;
   position: relative;
   margin-top: 30px;
+  width: 75%;
 }
 .icon {
   position: absolute;
@@ -12,16 +13,17 @@
   top: 35%;
   font-size: 14px;
 }
-.inputLoc input {
-  width: 40%;
+.inputLoc button {
+  width: 44%;
   height: 45px;
   text-align: center;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgb(255, 255, 255) !important;
 }
 .icon2 {
   position: absolute;
-  right: 53%;
+  right: 65%;
   font-size: 14px;
   top: 35%;
 }
@@ -34,7 +36,7 @@
     gap: 0;
   }
 
-  .inputLoc input {
+  .inputLoc button {
     width: 100%;
     border: none;
     border-left: 2px solid rgba(0, 0, 0, 0.2);
