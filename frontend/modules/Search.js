@@ -13,7 +13,12 @@ async function Search() {
     if (!found) acc.push(cur);
     return acc;
   }, []);
-  
+  const destinations = data.map((item) => item.destination);
+  const filtered = destinations.reduce((acc, cur) => {
+    const found = acc.find((a) => a.id === cur.id);
+    if (!found) acc.push(cur);
+    return acc;
+  }, []);
   return (
     <>
       <div className={styles.title}>
@@ -23,7 +28,7 @@ async function Search() {
         </h2>
       </div>
       <div className={styles.container}>
-        <LocationSelect origins={filter} />
+        <LocationSelect origins={filter} destinations={filtered} />
         <DateSelect />
       </div>
     </>
