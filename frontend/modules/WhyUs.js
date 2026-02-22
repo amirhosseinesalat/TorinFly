@@ -1,6 +1,20 @@
+"use client";
 import styles from "../styles/WhyUs.module.css";
-import Image from "next/Image";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 function WhyUs() {
+  const data = [
+    { id: 1, image: "/images/1.jpg" },
+    { id: 2, image: "/images/2.jpg" },
+    { id: 3, image: "/images/3.jpg" },
+    { id: 4, image: "/images/4.jpg" },
+  ];
   return (
     <div className={styles.container}>
       <div className={styles.right}>
@@ -21,7 +35,22 @@ function WhyUs() {
         </div>
       </div>
       <div className={styles.left}>
-        <Image src="/images/torinfly.png" width={80} height={55} />
+        <Swiper
+          modules={[Navigation, Pagination]}
+          slidesPerView={1}
+          spaceBetween={30}
+          navigation
+          pagination={{ type: "fraction" }}
+          style={{ width: "320px" }}
+        >
+          {data.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className={styles.card}>
+                <Image src={item.image} fill alt="slide" />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
