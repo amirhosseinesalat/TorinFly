@@ -1,0 +1,38 @@
+.container {
+  width: 95%;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  margin: 20px;
+}
+.boxLeft {
+  background-color: rgba(40, 167, 69, 1);
+  width: 80%;
+  border-radius: 10px;
+  display: flex;
+  gap: 400px;
+  white-space: nowrap;
+ }
+.boxRight{
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.boxRight h3{
+  font-size: 19px;
+  font-weight: 800;
+}
+.Button{
+  border: none;
+  background-color: #10411B;
+  color: #ffffff;
+  width: 150px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 8px;
+}

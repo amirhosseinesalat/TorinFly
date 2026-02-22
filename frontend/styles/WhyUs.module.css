@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 60px;
+}
+.whyUs h3 {
+  font-size: 30px;
+}
+.question {
+  border: none;
+  background-color: #10411b;
+  color: #ffffff;
+  border-radius: 100%;
+  width: 10%;
+  font-size: 23px;
+}
+.title{
+    font-size: 19px;
+    margin: 15px;
+} 
+.paragraph{
+    line-height: 35px;
+}
