@@ -43,5 +43,38 @@
 
 .image {
   object-fit: cover;
-  /* background: #ffffff; */
+}
+@media (max-width: 740px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .right {
+    width: 100%;
+  }
+  .whyUs {
+    width: 100%;
+  }
+
+  .whyUs h3 {
+    width: 100%;
+    margin-right: 5px;
+
+    white-space: nowrap;
+  }
+  .question {
+    width: auto;
+    min-width: 32px;
+  }
+  .card {
+    width: 60vw;
+  }
+  .title {
+    display: none;
+  }
+  .paragraph {
+    display: none;
+  }
 }

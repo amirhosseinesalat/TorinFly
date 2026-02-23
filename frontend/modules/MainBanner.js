@@ -1,5 +1,5 @@
 import styles from "../styles/MainBanner.module.css";
-import Image from "next/Image";
+import Image from "next/image";
 import { FaPhoneAlt } from "react-icons/fa";
 
 function MainBanner() {
@@ -10,13 +10,13 @@ function MainBanner() {
           style={{ color: "#ffffff", marginRight: "50px", marginTop: "35px" }}
         >
           {" "}
-          <h2 style={{ fontSize: "30px" }}>
+          <h2 className={styles.title}>
             خرید تلفنی از{" "}
             <span style={{ color: "#10411B", whiteSpace: "nowrap" }}>
               تورین فلای
             </span>
           </h2>
-          <p style={{ fontSize: "20px" }}>به هرکجا که میخواهید!</p>
+          <p className={styles.p}>به هرکجا که میخواهید!</p>
         </div>
         <Image
           className={styles.img}

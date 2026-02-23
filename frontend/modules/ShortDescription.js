@@ -8,8 +8,8 @@ function ShortDescription() {
         <div className={styles.right}>
           <Image
             src="/images/Group16.png"
-            width={60}
-            height={60}
+            width={80}
+            height={80}
             alt="short desc"
             fetchPriority="low"
           />
@@ -24,8 +24,8 @@ function ShortDescription() {
         <div className={styles.center}>
           <Image
             src="/images/Group17.png"
-            width={60}
-            height={60}
+            width={80}
+            height={80}
             alt="short desc"
             fetchPriority="low"
           />
@@ -40,8 +40,8 @@ function ShortDescription() {
         <div className={styles.left}>
           <Image
             src="/images/Group18.png"
-            width={60}
-            height={60}
+            width={80}
+            height={80}
             alt="short desc"
             fetchPriority="low"
           />

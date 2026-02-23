@@ -16,10 +16,19 @@
   flex-direction: row;
 }
 .container h4 {
-  font-size: 18px;
+  font-size: 21px;
   font-weight: bolder;
 }
 .container p {
   font-size: 13px;
   font-weight: 300;
+}
+@media (max-width: 740px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    margin-right: 55px;
+    white-space: inherit;
+  }
 }

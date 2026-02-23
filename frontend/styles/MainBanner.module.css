@@ -14,8 +14,14 @@
   display: flex;
   gap: 400px;
   white-space: nowrap;
- }
-.boxRight{
+}
+.title {
+  font-size: 30px;
+}
+.p {
+  font-size: 20px;
+}
+.boxRight {
   display: flex;
   flex-direction: column;
   margin-right: 50px;
@@ -23,16 +29,53 @@
   justify-content: center;
   gap: 10px;
 }
-.boxRight h3{
+.boxRight h3 {
   font-size: 19px;
   font-weight: 800;
 }
-.Button{
+.Button {
   border: none;
-  background-color: #10411B;
+  background-color: #10411b;
   color: #ffffff;
   width: 150px;
   height: 25px;
   cursor: pointer;
   border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    margin: 15px;
+  }
+  .boxLeft {
+    width: 100%;
+    height: 70%;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    gap: 10px;
+  }
+  .boxRight {
+    flex-direction: row;
+    padding: 15px;
+    gap: 20px;
+  }
+  .Button {
+    font-size: 15px;
+    height: 30px;
+  }
+  .boxRight h3 {
+    font-size: 25px;
+  }
+  .title {
+    font-size: 20px;
+    /* padding-bottom: 25px; */
+  }
+  .p {
+    font-size: 17px;
+  }
+  .img {
+    width: 150px;
+  height: 100%;
+
+  }
 }
