@@ -16,6 +16,25 @@
   gap: 15px;
 }
 
+.details {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+.details p {
+  font-weight: 100;
+  font-size: 14px;
+}
+.price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 150px;
+}
+.price h3 {
+  color: #009eca;
+  font-size: 25px;
+}
 .reserve {
   background-color: #28a745;
   border: none;
@@ -23,5 +42,5 @@
   border-radius: 8px;
   color: white;
   cursor: pointer;
-  margin-top: 20px;
+  width: 170px;
 }
