@@ -1,0 +1,27 @@
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  gap: 40px;
+}
+
+.container img {
+  width: 400px;
+  border-radius: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.reserve {
+  background-color: #28a745;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}

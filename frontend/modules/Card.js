@@ -1,6 +1,6 @@
 "use client";
 import styles from "../styles/Tours.module.css";
-
+import Link from "next/link";
 function Card({ tours }) {
   return (
     <div className={styles.grid}>
@@ -18,7 +18,9 @@ function Card({ tours }) {
               <span className={styles.price}>
                 {tour.price.toLocaleString()} تومان
               </span>
-              <button className={styles.reserve}>رزرو</button>
+              <Link href={`/tour/${tour.id}`}>
+                <button className={styles.reserve}>رزرو</button>
+              </Link>
             </div>
           </div>
         </div>
