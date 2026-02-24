@@ -4,8 +4,8 @@ import { useState } from "react";
 import styles from "../styles/DateSelect.module.css";
 import { MdOutlineDateRange } from "react-icons/md";
 
-function DateSelect() {
-  const [calendarValue, setCalendarValue] = useState(new Date());
+function DateSelect({ setDate, handleSearch }) {
+  const [calendarValue, setCalendarValue] = useState(null);
   const [open, setOpen] = useState(false);
 
   return (
@@ -13,22 +13,33 @@ function DateSelect() {
       <div className={styles.dateWrapper}>
         <div className={styles.date} onClick={() => setOpen((prev) => !prev)}>
           <MdOutlineDateRange className={styles.dateIcon} />
-          <button className={styles.buttonDate}>تاریخ</button>
+          <button className={styles.buttonDate}>
+            {calendarValue
+              ? calendarValue.toLocaleDateString("fa-IR")
+              : "تاریخ"}
+          </button>
         </div>
 
         {open && (
           <div className={styles.calendarBox}>
             <CalendarProvider locale="fa">
               <Calendar
-                defaultValue={calendarValue}
-                onChange={(e) => setCalendarValue(new Date(e.value))}
+                onChange={(e) => {
+                  const selected = new Date(e.value);
+                  setCalendarValue(selected);
+                  setDate(selected);
+                  setOpen(false);
+                }}
               />
             </CalendarProvider>
           </div>
         )}
       </div>
+
       <div className={styles.searchButton}>
-        <button className={styles.Button}>جستجو</button>
+        <button className={styles.Button} onClick={handleSearch}>
+          جستجو
+        </button>
       </div>
     </>
   );

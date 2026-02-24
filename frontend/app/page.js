@@ -10,7 +10,6 @@ export default function Home() {
     <>
       <Banner />
       <Search />
-      <Tours />
       <MainBanner />
       <WhyUs />
       <ShortDescription />
