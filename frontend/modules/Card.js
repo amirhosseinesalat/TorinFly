@@ -1,7 +1,23 @@
 "use client";
 import styles from "../styles/Tours.module.css";
 import Link from "next/link";
-function Card({ tours }) {
+import { Oval } from "react-loader-spinner";
+
+function Card({ tours, isLoading }) {
+  if (isLoading) {
+    return (
+      <div className={styles.loaderWrapper}>
+        <Oval
+          height={80}
+          width={80}
+          color="#28a745"
+          ariaLabel="oval-loading"
+          visible={true}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.grid}>
       {tours.map((tour) => (
@@ -18,6 +34,7 @@ function Card({ tours }) {
               <span className={styles.price}>
                 {tour.price.toLocaleString()} تومان
               </span>
+
               <Link href={`/tour/${tour.id}`}>
                 <button className={styles.reserve}>رزرو</button>
               </Link>

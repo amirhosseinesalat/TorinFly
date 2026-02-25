@@ -14,6 +14,7 @@ function Search() {
   const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
   const [date, setDate] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const handleSearch = () => {
     const result = tours.filter((tour) => {
       const matchOrigin = origin ? tour.origin.id === origin.id : true;
@@ -38,6 +39,7 @@ function Search() {
 
       setTours(data);
       setFilteredTours(data);
+      setIsLoading(false);
     };
 
     fetchTours();
@@ -75,10 +77,10 @@ function Search() {
         />
         <DateSelect setDate={setDate} handleSearch={handleSearch} />
       </div>
-      <Tours tours={filteredTours} />
+      <Tours tours={filteredTours} isLoading={isLoading} />
       {filteredTours.length === 0 && (
         <div style={{ textAlign: "center", marginTop: "40px" }}>
-          <h3>هیچ توری با این مشخصات پیدا نشد 😕</h3>
+          <h3>هیچ توری با این مشخصات پیدا نشد </h3>
         </div>
       )}
     </>

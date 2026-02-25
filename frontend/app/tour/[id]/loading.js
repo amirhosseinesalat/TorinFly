@@ -12,7 +12,6 @@ export default function Loading() {
         ariaLabel="oval-loading"
         visible={true}
       />
-      <div style={{ animation: "spin 1s linear infinite" }}>🔄</div>
     </div>
   );
 }
