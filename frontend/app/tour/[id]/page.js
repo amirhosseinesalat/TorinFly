@@ -54,9 +54,9 @@ async function TourDetails({ params }) {
               <p>حداکثر{tour.availableSeats}نفر</p>
             </h2>
             <h2>
-              <MdDirectionsTransit />
-              حمل و نقل
-              <p>{translateVehicle(tour.fleetVehicle)}</p>
+              <IoShieldCheckmark />
+              بیمه
+              <p>{tour.insurance ? tour.insurance : " ندارد"}</p>
             </h2>
           </div>
         </div>
