@@ -14,6 +14,7 @@ import { IoIosCall } from "react-icons/io";
 import { MdOutlineRecordVoiceOver } from "react-icons/md";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 function Header() {
   const [phone, setPhone] = useState(null);
@@ -29,6 +30,7 @@ function Header() {
   }, []);
   const deleteHandler = () => {
     localStorage.removeItem("phone");
+    toast.success("خروج با موفقیت...");
     window.location.reload(false);
   };
   return (

@@ -7,6 +7,7 @@ import styles from "../styles/AuthModal.module.css";
 import { IoClose } from "react-icons/io5";
 import axios from "axios";
 import { useRef } from "react";
+import toast from "react-hot-toast";
 
 function AuthModal({ onClose }) {
   const [step, setStep] = useState("phone");
@@ -31,13 +32,12 @@ function AuthModal({ onClose }) {
       setUserPhone(data.phone);
       setStep("otp");
     } catch (error) {
-      console.log(error);
-      alert("کد تایید اشتباه است!");
+      toast.error("کد تایید اشتباه است!");
     }
   };
   const handleVerifyOtp = async () => {
     if (otp.join("").length !== 6) {
-      alert("کد تایید کامل نیست");
+      toast.error("کد تایید کامل نیست");
       return;
     }
     try {
@@ -56,7 +56,7 @@ function AuthModal({ onClose }) {
     } catch (error) {
       console.log(error);
       const message = error.response?.data?.message || "کد تایید اشتباه است";
-      alert(message);
+      toast.error(message);
     }
   };
 
