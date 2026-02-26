@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "../utils/LoginForm";
 import styles from "../styles/AuthModal.module.css";
@@ -15,6 +16,7 @@ function AuthModal({ onClose }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [userPhone, setUserPhone] = useState("");
   const inputRefs = useRef([]);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -46,12 +48,10 @@ function AuthModal({ onClose }) {
         code: otp.join(""),
       });
 
-      console.log(res.data);
-
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("token", res.data.accessToken);
+      localStorage.setItem("refreshToken", res.data.refreshToken);
       localStorage.setItem("phone", userPhone);
-      window.dispatchEvent(new Event("storage"));
-      window.location.reload(false);
+      router.refresh();
       onClose();
     } catch (error) {
       console.log(error);
@@ -64,7 +64,7 @@ function AuthModal({ onClose }) {
     const val = e.target.value.replace(/[^0-9]/g, "");
 
     if (!val) return;
-
+    // console.log("FULL RESPONSE:", res.data);
     const newOtp = [...otp];
     newOtp[idx] = val;
     setOtp(newOtp);

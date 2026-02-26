@@ -5,6 +5,7 @@ export function translateVehicle(type) {
     train: "قطار",
     ship: "کشتی",
     van: "ون",
+    SUV: "افرود",
   };
 
   return vehicles[type] || type;

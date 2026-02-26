@@ -9,7 +9,8 @@ import { FaCalendar } from "react-icons/fa";
 import { MdDirectionsTransit } from "react-icons/md";
 import { HiUsers } from "react-icons/hi2";
 import { IoShieldCheckmark } from "react-icons/io5";
-function TourDetails({tour}) {
+import ReserveButton from "../modules/ReserveButton";
+function TourDetails({ tour }) {
   const start = new Date(tour.startDate);
   const end = new Date(tour.endDate);
 
@@ -74,7 +75,7 @@ function TourDetails({tour}) {
               {tour.price.toLocaleString()}
               <span style={{ fontSize: "16px", color: "gray" }}> تومان </span>
             </h3>
-            <button className={styles.reserve}>رزرو و خرید</button>
+            <ReserveButton tourId={tour.id} />
           </div>
         </div>
       </div>
