@@ -1,14 +1,20 @@
 "use client";
-
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import passengerSchema from "../utils/passengerForm";
 import styles from "../styles/checkoutPage.module.css";
 import { FaUser } from "react-icons/fa";
+import { Calendar, CalendarProvider } from "zaman";
+import { Controller } from "react-hook-form";
+import { MdOutlineDateRange } from "react-icons/md";
 function CheckoutForm({ tour }) {
+  const [calendarValue, setCalendarValue] = useState(null);
+  const [open, setOpen] = useState(false);
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(passengerSchema),
@@ -39,10 +45,44 @@ function CheckoutForm({ tour }) {
           </select>
           {errors.gender && <p>{errors.gender.message}</p>}
 
-          <input placeholder="کد ملی" {...register("idCart")} />
+          <input placeholder="کد ملی" type="number" {...register("idCart")} />
           {errors.idCart && <p>{errors.idCart.message}</p>}
 
-          <input type="date" {...register("date")} />
+          <Controller
+            control={control}
+            name="date"
+            render={({ field }) => (
+              <div className={styles.dateWrapper}>
+                <div
+                  className={styles.dateInputBox}
+                  onClick={() => setOpen((prev) => !prev)}
+                >
+                  <MdOutlineDateRange className={styles.dateIcon} />
+                  <span>
+                    {calendarValue
+                      ? calendarValue.toLocaleDateString("fa-IR")
+                      : "1385/11/04"}
+                  </span>
+                </div>
+
+                {open && (
+                  <div className={styles.calendarBox}>
+                    <CalendarProvider locale="fa">
+                      <Calendar
+                        onChange={(e) => {
+                          const selected = new Date(e.value);
+                          setCalendarValue(selected);
+                          field.onChange(selected);
+                          setOpen(false);
+                        }}
+                      />
+                    </CalendarProvider>
+                  </div>
+                )}
+              </div>
+            )}
+          />
+
           {errors.date && <p>{errors.date.message}</p>}
         </div>
 
