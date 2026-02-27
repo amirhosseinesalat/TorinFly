@@ -26,7 +26,7 @@ function ReserveButton({ tourId }) {
         throw new Error("خطا در ثبت سبد خرید");
       }
 
-      router.push("/basket");
+      router.push(`/checkout/${tourId}`);
     } catch (error) {
       console.log(error);
       toast.error("ابتدا وارد حساب کاربری شوید");

@@ -64,7 +64,6 @@ function AuthModal({ onClose }) {
     const val = e.target.value.replace(/[^0-9]/g, "");
 
     if (!val) return;
-    // console.log("FULL RESPONSE:", res.data);
     const newOtp = [...otp];
     newOtp[idx] = val;
     setOtp(newOtp);

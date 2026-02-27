@@ -8,7 +8,6 @@ async function TourDetail({ params }) {
   if (!tour.id) {
     return <h2>توری پیدا نشد</h2>;
   }
-  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   return <TourDetails tour={tour} />;
 }

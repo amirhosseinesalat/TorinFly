@@ -48,7 +48,7 @@ function TourDetails({ tour }) {
             <h2>
               <IoShieldCheckmark />
               بیمه
-              <p>{tour.insurance ? tour.insurance : " ندارد"}</p>
+              <p>ندارد</p>
             </h2>
           </div>
         </div>
