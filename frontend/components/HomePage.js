@@ -5,6 +5,7 @@ import ShortDescription from "../modules/ShortDescription";
 import WhyUs from "../modules/WhyUs";
 import { Toaster } from "react-hot-toast";
 function HomePage() {
+  
   return (
     <>
       <Toaster position="top-center" />

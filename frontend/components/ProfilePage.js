@@ -27,10 +27,10 @@ function ProfilePage({ phone }) {
       </div>
       <div className={styles.userInfo}>
         <h2>اطلاعات حساب کاربری</h2>
-        <div>
+        <div className={styles.phoneNumber}>
           <h4>شماره موبایل </h4>
         </div>
-        <div>
+        <div className={styles.email}>
           <input type="email" placeholder="ادرس ایمیل " />
           <button>تایید</button>
         </div>
