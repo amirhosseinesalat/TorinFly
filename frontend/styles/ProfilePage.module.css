@@ -1,7 +1,16 @@
-.sign {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 2px solid #28a745;
+.active {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.active button {
+  margin: 10px;
+  border: none;
   background: none;
+  cursor: pointer;
+}
+.select {
+  color: #28a745;
+  border-bottom: 2px solid #28a745 !important;
 }
