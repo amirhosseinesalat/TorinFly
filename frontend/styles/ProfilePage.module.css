@@ -2,15 +2,23 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 55px;
 }
 .active button {
   margin: 10px;
   border: none;
   background: none;
   cursor: pointer;
+  font-size: 16px;
 }
 .select {
   color: #28a745;
   border-bottom: 2px solid #28a745 !important;
+}
+.userInfo {
+    /* justify-content: center; */
+    border: 2px solid rgba(29, 31, 30, 0.1);
+    margin: 10px;
+    margin-right: 50px ;
+  width: 80%;
 }

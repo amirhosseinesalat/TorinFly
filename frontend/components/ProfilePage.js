@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import styles from "../styles/ProfilePage.module.css";
-function ProfilePage() {
+function ProfilePage({ phone }) {
   const [selected, setSelected] = useState("profile");
   return (
     <div>
@@ -24,6 +24,16 @@ function ProfilePage() {
         >
           تراکنش ها
         </button>
+      </div>
+      <div className={styles.userInfo}>
+        <h2>اطلاعات حساب کاربری</h2>
+        <div>
+          <h4>شماره موبایل </h4>
+        </div>
+        <div>
+          <input type="email" placeholder="ادرس ایمیل " />
+          <button>تایید</button>
+        </div>
       </div>
     </div>
   );
