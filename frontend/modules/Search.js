@@ -77,12 +77,12 @@ function Search() {
         />
         <DateSelect setDate={setDate} handleSearch={handleSearch} />
       </div>
-      <Tours tours={filteredTours} isLoading={isLoading} />
-      {filteredTours.length === 0 && (
-        <div style={{ textAlign: "center", marginTop: "40px" }}>
-          <h3>هیچ توری با این مشخصات پیدا نشد </h3>
-        </div>
-      )}
+      {<Tours tours={filteredTours} isLoading={isLoading} /> ||
+        (filteredTours.length === 0 && (
+          <div style={{ textAlign: "center", marginTop: "40px" }}>
+            <h3>هیچ توری با این مشخصات پیدا نشد </h3>
+          </div>
+        ))}
     </>
   );
 }

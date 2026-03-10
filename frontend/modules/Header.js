@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Authmodal from "../modules/Authmodal";
 import styles from "../styles/Layout.module.css";
-import Image from "next/Image";
+import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
@@ -148,9 +148,11 @@ function Header() {
                     <FaUserCircle />
                     {phone}
                   </li>
-                  <li style={{ color: "#10411B" }}>
-                    <FaUser /> اطلاعات حساب کاربری
-                  </li>
+                  <Link href="/profile" style={{ textDecoration: "none" }}>
+                    <li style={{ color: "#10411B" }}>
+                      <FaUser /> اطلاعات حساب کاربری
+                    </li>
+                  </Link>
                   <li onClick={deleteHandler}>
                     <CiLogin />
                     خروج از حساب کاربری

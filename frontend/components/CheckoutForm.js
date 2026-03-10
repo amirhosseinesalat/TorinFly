@@ -8,6 +8,7 @@ import { FaUser } from "react-icons/fa";
 import { Calendar, CalendarProvider } from "zaman";
 import { Controller } from "react-hook-form";
 import { MdOutlineDateRange } from "react-icons/md";
+import Link from "next/link";
 function CheckoutForm({ tour }) {
   const [calendarValue, setCalendarValue] = useState(null);
   const [open, setOpen] = useState(false);
@@ -99,10 +100,11 @@ function CheckoutForm({ tour }) {
               {tour.price.toLocaleString()} تومان
             </span>
           </div>
-
-          <button type="submit" className={styles.finalButton}>
-            ثبت و خرید نهایی
-          </button>
+          <Link href="/profile">
+            <button type="submit" className={styles.finalButton}>
+              ثبت و خرید نهایی
+            </button>
+          </Link>
         </div>
       </form>
     </div>

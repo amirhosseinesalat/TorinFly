@@ -8,7 +8,6 @@ const passengerSchema = yup.object({
   idCart: yup
     .string()
     .required("وارد کردن کد ملی الزامیست")
-  
     .length(10, "کد ملی باید ۱۰ رقم باشد"),
 
   date: yup.string().required("وارد کردن تاریخ تولد الزامیست"),
