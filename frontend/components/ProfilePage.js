@@ -7,6 +7,7 @@ import { Calendar, CalendarProvider } from "zaman";
 import { Controller } from "react-hook-form";
 import styles from "../styles/ProfilePage.module.css";
 import { MdOutlineDateRange } from "react-icons/md";
+import Link from "next/link";
 function ProfilePage() {
   const [selected, setSelected] = useState("profile");
   const [calendarValue, setCalendarValue] = useState(null);
@@ -118,7 +119,12 @@ function ProfilePage() {
               {errors.date && <p>{errors.date.message}</p>}
               <div className={styles.btn}>
                 <button type="submit">تایید</button>
-                <button className={styles.btn2}>انصراف</button>
+                <button className={styles.btn2}>
+                  <Link href="/" className={styles.Link}>
+                    {" "}
+                    انصراف{" "}
+                  </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -141,7 +147,13 @@ function ProfilePage() {
 
             <div className={styles.btn}>
               <button type="submit">تایید</button>
-              <button className={styles.btn2}>انصراف</button>
+
+              <button className={styles.btn2}>
+                {" "}
+                <Link href="/" className={styles.Link}>
+                  انصراف{" "}
+                </Link>
+              </button>
             </div>
           </div>
         </form>
