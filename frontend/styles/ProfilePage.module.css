@@ -22,7 +22,7 @@
   border-radius: 10px;
   height: 180px;
   width: 80%;
-  padding: 15px;
+  padding-right: 55px;
 }
 .phoneNumber {
   padding-top: 20px;
@@ -33,7 +33,7 @@
   gap: 35px;
 }
 .email input {
-  height: 45px;
+  height: 50px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #1515;
@@ -45,4 +45,122 @@
   border-radius: 5px;
   border: none;
   font-size: 18px;
+}
+
+.container {
+  width: 100%;
+  padding: 40px 60px;
+  background: none;
+  min-height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.passengerDetails {
+  flex: 1;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.passengerDetails h2 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111827;
+}
+
+.passengerDetails input,
+.passengerDetails select {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 18px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.passengerDetails input:focus,
+.passengerDetails select:focus {
+  outline: none;
+  border-color: #00a651;
+  box-shadow: 0 0 0 3px rgba(0, 166, 81, 0.1);
+}
+
+.passengerDetails p {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: -12px;
+  margin-bottom: 14px;
+}
+
+.dateWrapper {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.dateInputBox {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  background: white;
+}
+
+.dateInputBox:hover {
+  border-color: #00a651;
+}
+
+.dateIcon {
+  margin-left: 8px;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.calendarBox {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  z-index: 50;
+  background: white;
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.btn button {
+  width: 45%;
+  margin-right: 12px;
+  height: 40px;
+  cursor: pointer;
+}
+.btn :first-child {
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #e5e7eb;
+  font-size: 19px;
+}
+.btn2 {
+  border-radius: 5px;
+  font-size: 19px;
+  border: 2px solid #28a745;
+  background-color: #ffffff;
+  color: #28a745;
+  font-weight: bolder;
 }
