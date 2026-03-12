@@ -11,6 +11,10 @@ const passengerSchema = yup.object({
     .length(10, "کد ملی باید ۱۰ رقم باشد"),
 
   date: yup.string().required("وارد کردن تاریخ تولد الزامیست"),
+  cartNumber: yup
+    .string()
+    .required("وارد کردن شماره کارت الزامیست")
+    .length(16, "شماره کارت نامعتبر است"),
 });
 
 export default passengerSchema;

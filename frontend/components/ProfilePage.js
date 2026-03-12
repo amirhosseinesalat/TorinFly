@@ -55,69 +55,97 @@ function ProfilePage() {
           <button>تایید</button>
         </div>
       </div>
+
       <div className={styles.container}>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.wrapper}>
-          <div className={styles.passengerDetails}>
-        <h2>ویرایش اطلاعات شخصی</h2>
-            <input
-              placeholder="نام و نام خانوادگی"
-              type="text"
-              {...register("username")}
-            />
-            {errors.username && <p>{errors.username.message}</p>}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.wrapper}>
+            <div className={styles.passengerDetails}>
+              <h2>ویرایش اطلاعات شخصی</h2>
+              <input
+                placeholder="نام و نام خانوادگی"
+                type="text"
+                {...register("username")}
+              />
+              {errors.username && <p>{errors.username.message}</p>}
 
-            <input placeholder="کد ملی" type="number" {...register("idCart")} />
-            {errors.idCart && <p>{errors.idCart.message}</p>}
-            <select {...register("gender")}>
-              <option value="">انتخاب جنسیت</option>
-              <option value="male">مرد</option>
-              <option value="female">زن</option>
-            </select>
-            {errors.gender && <p>{errors.gender.message}</p>}
+              <input
+                placeholder="کد ملی"
+                type="number"
+                {...register("idCart")}
+              />
+              {errors.idCart && <p>{errors.idCart.message}</p>}
+              <select {...register("gender")}>
+                <option value="">انتخاب جنسیت</option>
+                <option value="male">مرد</option>
+                <option value="female">زن</option>
+              </select>
+              {errors.gender && <p>{errors.gender.message}</p>}
 
-            <Controller
-              control={control}
-              name="date"
-              render={({ field }) => (
-                <div className={styles.dateWrapper}>
-                  <div
-                    className={styles.dateInputBox}
-                    onClick={() => setOpen((prev) => !prev)}
-                  >
-                    <MdOutlineDateRange className={styles.dateIcon} />
-                    <span>
-                      {calendarValue
-                        ? calendarValue.toLocaleDateString("fa-IR")
-                        : "1385/11/04"}
-                    </span>
-                  </div>
-
-                  {open && (
-                    <div className={styles.calendarBox}>
-                      <CalendarProvider locale="fa">
-                        <Calendar
-                          onChange={(e) => {
-                            const selected = new Date(e.value);
-                            setCalendarValue(selected);
-                            field.onChange(selected);
-                            setOpen(false);
-                          }}
-                        />
-                      </CalendarProvider>
+              <Controller
+                control={control}
+                name="date"
+                render={({ field }) => (
+                  <div className={styles.dateWrapper}>
+                    <div
+                      className={styles.dateInputBox}
+                      onClick={() => setOpen((prev) => !prev)}
+                    >
+                      <MdOutlineDateRange className={styles.dateIcon} />
+                      <span>
+                        {calendarValue
+                          ? calendarValue.toLocaleDateString("fa-IR")
+                          : "1385/11/04"}
+                      </span>
                     </div>
-                  )}
-                </div>
-              )}
+
+                    {open && (
+                      <div className={styles.calendarBox}>
+                        <CalendarProvider locale="fa">
+                          <Calendar
+                            onChange={(e) => {
+                              const selected = new Date(e.value);
+                              setCalendarValue(selected);
+                              field.onChange(selected);
+                              setOpen(false);
+                            }}
+                          />
+                        </CalendarProvider>
+                      </div>
+                    )}
+                  </div>
+                )}
+              />
+              {errors.date && <p>{errors.date.message}</p>}
+              <div className={styles.btn}>
+                <button type="submit">تایید</button>
+                <button className={styles.btn2}>انصراف</button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className={styles.passengerDetails}
+            style={{ marginTop: "20px" }}
+          >
+            <h2>ویرایش اطلاعات حساب بانکی</h2>
+            <input
+              placeholder="شماره کارت"
+              type="number"
+              {...register("cartNumber")}
             />
-            {errors.date && <p>{errors.date.message}</p>}
+            {errors.cartNumber && <p>{errors.cartNumber.message}</p>}
+
+            <input placeholder="شماره حساب" type="number" />
+
+            <input placeholder="شماره شبا" type="number" />
+
             <div className={styles.btn}>
-              <button>تایید</button>
+              <button type="submit">تایید</button>
               <button className={styles.btn2}>انصراف</button>
             </div>
           </div>
         </form>
       </div>
-      
     </div>
   );
 }
