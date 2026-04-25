@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Authmodal from "../modules/Authmodal";
+import AuthModal from "./AuthModal";
 import styles from "../styles/Layout.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -131,7 +131,7 @@ function Header() {
           </ul>
         </div>
         <div className={styles.left}>
-          {showModal && <Authmodal onClose={() => setShowModal(false)} />}
+          {showModal && <AuthModal onClose={() => setShowModal(false)} />}
           {phone ? (
             <span className={styles.phoneNumber}>
               <FaUser style={{ fontSize: "12px" }} />

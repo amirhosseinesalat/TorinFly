@@ -33,12 +33,14 @@ function ProfilePage() {
         >
           پروفایل
         </button>
-        <button
-          className={selected === "tours" ? styles.select : ""}
-          onClick={() => setSelected("tours")}
-        >
-          تور های من
-        </button>
+        <Link href="my-tours">
+          <button
+            className={selected === "tours" ? styles.select : ""}
+            onClick={() => setSelected("tours")}
+          >
+            تور های من
+          </button>
+        </Link>
         <button
           className={selected === "transaction" ? styles.select : ""}
           onClick={() => setSelected("transaction")}
