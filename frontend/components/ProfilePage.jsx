@@ -8,8 +8,9 @@ import { Controller } from "react-hook-form";
 import styles from "../styles/ProfilePage.module.css";
 import { MdOutlineDateRange } from "react-icons/md";
 import Link from "next/link";
+import UserMenu from "../modules/UserMenu";
+
 function ProfilePage() {
-  const [selected, setSelected] = useState("profile");
   const [calendarValue, setCalendarValue] = useState(null);
   const [open, setOpen] = useState(false);
   const {
@@ -26,36 +27,23 @@ function ProfilePage() {
   };
   return (
     <div>
-      <div className={styles.active}>
-        <button
-          className={selected === "profile" ? styles.select : ""}
-          onClick={() => setSelected("profile")}
-        >
-          پروفایل
-        </button>
-        <Link href="my-tours">
-          <button
-            className={selected === "tours" ? styles.select : ""}
-            onClick={() => setSelected("tours")}
-          >
-            تور های من
-          </button>
-        </Link>
-        <button
-          className={selected === "transaction" ? styles.select : ""}
-          onClick={() => setSelected("transaction")}
-        >
-          تراکنش ها
-        </button>
-      </div>
       <div className={styles.userInfo}>
-        <h2>اطلاعات حساب کاربری</h2>
-        <div className={styles.phoneNumber}>
-          <h4>شماره موبایل </h4>
+        <div className={styles.sideMenu}>
+          {" "}
+          <UserMenu />
         </div>
-        <div className={styles.email}>
-          <input type="email" placeholder="ادرس ایمیل " />
-          <button>تایید</button>
+        <div className={styles.wrap}>
+          <h2>اطلاعات حساب کاربری</h2>
+          <div className={styles.wrap2}>
+            <div className={styles.phoneNumber}>
+              <h4>شماره موبایل : 09165180927 </h4>
+              
+            </div>
+            <div className={styles.email}>
+              <input type="email" placeholder="ادرس ایمیل " />
+              <button>تایید</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -97,7 +85,7 @@ function ProfilePage() {
                       <span>
                         {calendarValue
                           ? calendarValue.toLocaleDateString("fa-IR")
-                          : "1385/11/04"}
+                          : "تاریخ تولد"}
                       </span>
                     </div>
 

@@ -1,21 +1,4 @@
-.active {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 55px;
-}
-.active button {
-  margin: 10px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-.select {
-  color: #28a745;
-  border-bottom: 2px solid #28a745 !important;
-}
-.userInfo {
+.wrap {
   border: 2px solid rgba(7, 7, 7, 0.1);
   margin: 10px;
   margin-right: 45px;
@@ -65,7 +48,7 @@
   background: #ffffff;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  border: 2px solid rgba(7, 7, 7, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -173,4 +156,33 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+@media (min-width: 720px) {
+  .userInfo {
+    display: flex;
+    flex-direction: row;
+  }
+  .wrap {
+    width: 850px;
+    gap: 20px;
+    height: 150px;
+    margin-top: 35px;
+  }
+  .wrap2 {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+  .email input {
+    width: 400px;
+  }
+  .phoneNumber {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  .container {
+    margin-right: 290px;
+
+    width: 975px !important;
+  }
 }

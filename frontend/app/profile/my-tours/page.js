@@ -1,5 +1,5 @@
 function MyToursPage() {
-  return <div>page</div>;
+  return <div>MyToursPage</div>;
 }
 
 export default MyToursPage;
