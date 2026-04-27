@@ -23,7 +23,7 @@ function ReserveButton({ tourId }) {
       });
 
       if (!res.ok) {
-        throw new Error("خطا در ثبت سبد خرید");
+        console.log("خطا در ثبت سبد خرید");
       }
 
       router.push(`/checkout/${tourId}`);

@@ -2,13 +2,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import passengerSchema from "../utils/passengerForm";
+
 import { Calendar, CalendarProvider } from "zaman";
 import { Controller } from "react-hook-form";
 import styles from "../styles/ProfilePage.module.css";
 import { MdOutlineDateRange } from "react-icons/md";
 import Link from "next/link";
 import UserMenu from "../modules/UserMenu";
+import editPassengerSchema from "../utils/editPassengerForm";
 
 function ProfilePage() {
   const [calendarValue, setCalendarValue] = useState(null);
@@ -19,7 +20,7 @@ function ProfilePage() {
     control,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(passengerSchema),
+    resolver: yupResolver(editPassengerSchema),
   });
 
   const onSubmit = (data) => {
@@ -37,7 +38,6 @@ function ProfilePage() {
           <div className={styles.wrap2}>
             <div className={styles.phoneNumber}>
               <h4>شماره موبایل : 09165180927 </h4>
-              
             </div>
             <div className={styles.email}>
               <input type="email" placeholder="ادرس ایمیل " />
