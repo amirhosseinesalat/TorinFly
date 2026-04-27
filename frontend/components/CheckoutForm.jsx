@@ -24,8 +24,34 @@ function CheckoutForm({ tour }) {
   });
 
   const onSubmit = async (data) => {
-    console.log("FORM DATA in onSubmit:", data);
-    router.push("/profile");
+    const token = localStorage.getItem("token");
+    const persianDate = new Intl.DateTimeFormat("fa-IR", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    }).format(new Date(data.date));
+
+    const payload = {
+      nationalCode: data.idCart,
+      fullName: data.username,
+      gender: data.gender,
+      birthDate: persianDate,
+    };
+
+    try {
+      const res = await fetch("http://localhost:6500/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      router.push("/profile");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const start = new Date(tour.startDate);

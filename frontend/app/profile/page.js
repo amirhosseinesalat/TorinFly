@@ -1,7 +1,5 @@
 import ProfilePage from "../../components/ProfilePage";
-
-function Profile() {
+function UserPage() {
   return <ProfilePage />;
 }
-
-export default Profile;
+export default UserPage;

@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": "d53168b2-6207-4a07-9307-6ad9b5f02bbc",
+    "userId": "4baf2ab4-cb43-4f5c-be08-4b49fb112730",
+    "amount": 35000,
+    "type": "Purchase",
+    "createdAt": "2026-04-27T12:38:59.351Z"
+  }
+]
