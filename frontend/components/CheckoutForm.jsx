@@ -12,6 +12,9 @@ import { useRouter } from "next/navigation";
 function CheckoutForm({ tour }) {
   const [calendarValue, setCalendarValue] = useState(null);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const router = useRouter();
 
   const {
@@ -24,19 +27,33 @@ function CheckoutForm({ tour }) {
   });
 
   const onSubmit = async (data) => {
+    setLoading(true);
+    setErrorMessage("");
+
     const token = localStorage.getItem("token");
+
+    if (!token) {
+      setErrorMessage("لطفاً ابتدا وارد حساب کاربری شوید.");
+      setLoading(false);
+      return;
+    }
+
+    
     const persianDate = new Intl.DateTimeFormat("fa-IR", {
       year: "numeric",
       month: "numeric",
       day: "numeric",
     }).format(new Date(data.date));
 
+  
     const payload = {
       nationalCode: data.idCart,
       fullName: data.username,
       gender: data.gender,
       birthDate: persianDate,
     };
+
+    console.log("Sending Payload:", payload);
 
     try {
       const res = await fetch("http://localhost:6500/order", {
@@ -48,9 +65,43 @@ function CheckoutForm({ tour }) {
         body: JSON.stringify(payload),
       });
 
-      router.push("/profile");
+      const responseData = await res.json();
+
+      if (res.ok) {
+      
+        console.log("Success:", responseData);
+        localStorage.setItem("passengerData", JSON.stringify(payload));
+        router.push("/profile");
+      } else {
+    
+        console.error("Server Error:", responseData);
+
+ 
+
+        setErrorMessage(
+          `خطای سرور: ${responseData.message || "درخواست انجام نشد"}. اما اطلاعات در مرورگر ذخیره شد.`,
+        );
+
+
+        localStorage.setItem("passengerData", JSON.stringify(payload));
+
+      
+        setTimeout(() => {
+          router.push("/profile");
+        }, 2000);
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Network Error:", error);
+      setErrorMessage("خطا در ارتباط با سرور.");
+
+  
+      localStorage.setItem("passengerData", JSON.stringify(payload));
+
+      setTimeout(() => {
+        router.push("/profile");
+      }, 2000);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,13 +111,20 @@ function CheckoutForm({ tour }) {
 
   return (
     <div className={styles.container}>
-      <form
-        onSubmit={handleSubmit((d) => {
-          console.log("INSIDE handleSubmit raw:", d);
-          onSubmit(d);
-        })}
-        className={styles.wrapper}
-      >
+      {errorMessage && (
+        <div
+          style={{
+            color: "red",
+            padding: "10px",
+            marginBottom: "10px",
+            backgroundColor: "#ffebee",
+          }}
+        >
+          {errorMessage}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.wrapper}>
         <div className={styles.passengerDetails}>
           <h2>
             <FaUser /> مشخصات مسافر
@@ -89,7 +147,6 @@ function CheckoutForm({ tour }) {
             control={control}
             name="date"
             render={({ field }) => {
-              console.log("Controller field value:", field.value);
               return (
                 <div className={styles.dateWrapper}>
                   <div
@@ -103,7 +160,6 @@ function CheckoutForm({ tour }) {
                         : "تاریخ تولد"}
                     </span>
                   </div>
-
                   {open && (
                     <div className={styles.calendarBox}>
                       <CalendarProvider locale="fa">
@@ -127,20 +183,20 @@ function CheckoutForm({ tour }) {
 
         <div className={styles.reserveBox}>
           <h3>{tour.title}</h3>
-
           <p className={styles.duration}>{duration} روزه</p>
-
           <div className={styles.divider}></div>
-
           <div className={styles.priceBox}>
             <span>قیمت نهایی</span>
             <span className={styles.price}>
               {tour.price.toLocaleString()} تومان
             </span>
           </div>
-
-          <button type="submit" className={styles.finalButton}>
-            ثبت و خرید نهایی
+          <button
+            type="submit"
+            className={styles.finalButton}
+            disabled={loading}
+          >
+            {loading ? "در حال ثبت..." : "ثبت و خرید نهایی"}
           </button>
         </div>
       </form>
