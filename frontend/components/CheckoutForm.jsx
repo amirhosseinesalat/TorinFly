@@ -93,8 +93,6 @@ function CheckoutForm({ tour }) {
     } catch (error) {
       console.error("Network Error:", error);
       setErrorMessage("خطا در ارتباط با سرور.");
-
-  
       localStorage.setItem("passengerData", JSON.stringify(payload));
 
       setTimeout(() => {

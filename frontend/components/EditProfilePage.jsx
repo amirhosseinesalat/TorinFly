@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Calendar, CalendarProvider } from "zaman";
 import { Controller } from "react-hook-form";
-import styles from "../styles/ProfilePage.module.css";
+import styles from "../styles/EditProfilePage.module.css";
 import { MdOutlineDateRange } from "react-icons/md";
 import Link from "next/link";
 import UserMenu from "../modules/UserMenu";

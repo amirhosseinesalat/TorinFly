@@ -135,7 +135,7 @@
     "title": "تور آفرود",
     "fleetVehicle": "SUV",
     "price": 35000,
-    "availableSeats": 23,
+    "availableSeats": 22,
     "capacity": 250,
     "insurance": true,
     "options": [
