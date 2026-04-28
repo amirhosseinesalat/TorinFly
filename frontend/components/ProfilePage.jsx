@@ -70,19 +70,23 @@ export default function ProfilePage() {
 
           {passengerData ? (
             <>
-              <p>
-                <strong>نام و نام خانوادگی:</strong> {passengerData.fullName}
-              </p>
-              <p>
-                <strong>کد ملی:</strong> {passengerData.nationalCode}
-              </p>
-              <p>
-                <strong>جنسیت:</strong>{" "}
-                {passengerData.gender === "male" ? "مرد" : "زن"}
-              </p>
-              <p>
-                <strong>تاریخ تولد:</strong> {passengerData.birthDate}
-              </p>
+              <div className={styles.part1}>
+                <p>
+                  <strong>نام و نام خانوادگی:</strong> {passengerData.fullName}
+                </p>
+                <p>
+                  <strong>کد ملی:</strong> {passengerData.nationalCode}
+                </p>
+              </div>
+              <div className={styles.part2}>
+                <p>
+                  <strong>جنسیت:</strong>{" "}
+                  {passengerData.gender === "male" ? "مرد" : "زن"}
+                </p>
+                <p>
+                  <strong>تاریخ تولد:</strong> {passengerData.birthDate}
+                </p>
+              </div>
             </>
           ) : (
             <p>هیچ اطلاعات مسافری یافت نشد.</p>

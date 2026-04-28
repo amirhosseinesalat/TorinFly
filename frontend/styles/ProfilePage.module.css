@@ -22,7 +22,8 @@
 .userInfo div {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+
+  gap: 150px;
   margin-top: 40px;
   margin-bottom: 20px;
 }
@@ -30,4 +31,18 @@
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+}
+.part1 {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+
+  gap: 150px;
+}
+.part2 {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+
+  gap: 230px;
 }
