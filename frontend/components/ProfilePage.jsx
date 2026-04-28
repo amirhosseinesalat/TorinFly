@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "../styles/ProfilePage.module.css";
 import UserMenu from "../modules/UserMenu";
 import { Oval } from "react-loader-spinner";
+import Link from "next/link";
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [passengerData, setPassengerData] = useState(null);
@@ -62,12 +63,20 @@ export default function ProfilePage() {
           <div>
             <p>شماره موبایل :{user.mobile}</p>
             <p>ایمیل: {user.email || "-"}</p>
+            <Link href="/edit-profile">
+              <button className={styles.add}>افزودن</button>
+            </Link>
           </div>
         </div>
 
         <div className={styles.personalData}>
-          <h3>اطلاعات شخصی</h3>
+          <div className={styles.personalDataHead}>
+            <h3>اطلاعات شخصی</h3>
 
+            <Link href="/edit-profile">
+              <button className={styles.add}>ویرایش اطلاعات</button>
+            </Link>
+          </div>
           {passengerData ? (
             <>
               <div className={styles.part1}>
@@ -91,6 +100,22 @@ export default function ProfilePage() {
           ) : (
             <p>هیچ اطلاعات مسافری یافت نشد.</p>
           )}
+        </div>
+        <div className={styles.bankInfo}>
+          <div className={styles.bankInfoHead}>
+            <h3> اطلاعات حساب بانکی</h3>
+            <Link href="/edit-profile">
+              <button className={styles.add}>ویرایش اطلاعات</button>
+            </Link>
+          </div>
+          <div style={{ marginTop: "30px" }}>
+            <p>شماره شبا:{user.shaba_code || "-"}</p>
+            <p> شماره کارت:{user.debitCard_code || "-"}</p>
+          </div>
+          <p style={{ marginTop: "30px" }}>
+            {" "}
+            شماره حساب:{user.accountIdentifier || "-"}
+          </p>
         </div>
       </div>
     </div>
