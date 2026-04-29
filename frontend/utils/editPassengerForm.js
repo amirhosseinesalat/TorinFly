@@ -1,20 +1,31 @@
 import * as yup from "yup";
 
-const editPassengerSchema = yup.object({
-  username: yup.string().trim().required("وارد کردن نام الزامیست!"),
-
-  gender: yup.string().required("وارد کردن جنسیت الزامیست!"),
+const editPassengerSchema = yup.object().shape({
+  username: yup
+    .string()
+    .min(5, "نام و نام خانوادگی باید حداقل ۵ کاراکتر باشد")
+    .required("نام و نام خانوادگی الزامی است"),
 
   idCart: yup
     .string()
-    .required("وارد کردن کد ملی الزامیست")
-    .length(10, "کد ملی باید ۱۰ رقم باشد"),
+    .length(10, "کد ملی باید ۱۰ رقم باشد")
+    .required("کد ملی الزامی است"),
 
-  date: yup.string().required("وارد کردن تاریخ تولد الزامیست"),
-  cartNumber: yup
+  gender: yup
     .string()
-    .required("وارد کردن شماره کارت الزامیست")
-    .length(16, "شماره کارت نامعتبر است"),
+    .oneOf(["male", "female"], "جنسیت نامعتبر است")
+    .required("انتخاب جنسیت الزامی است"),
+
+  date: yup
+    .date()
+    .typeError("تاریخ تولد الزامی است")
+    .required("تاریخ تولد الزامی است"),
+
+  cartNumber: yup.string(),
+
+  accountNumber: yup.string(),
+
+  shabaCode: yup.string(),
 });
 
 export default editPassengerSchema;

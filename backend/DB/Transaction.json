@@ -75,5 +75,40 @@
     "amount": 35000,
     "type": "Purchase",
     "createdAt": "2026-04-28T18:23:58.617Z"
+  },
+  {
+    "id": "b01967d6-fee2-4e5c-8485-f38ee1402c57",
+    "userId": "4baf2ab4-cb43-4f5c-be08-4b49fb112730",
+    "amount": 35000,
+    "type": "Purchase",
+    "createdAt": "2026-04-29T05:45:06.505Z"
+  },
+  {
+    "id": "bf0220b6-60b8-457c-b006-4a62025727db",
+    "userId": "4baf2ab4-cb43-4f5c-be08-4b49fb112730",
+    "amount": 240000,
+    "type": "Purchase",
+    "createdAt": "2026-04-29T06:07:24.541Z"
+  },
+  {
+    "id": "b44dbf25-0212-44d5-9271-67db3781998b",
+    "userId": "4baf2ab4-cb43-4f5c-be08-4b49fb112730",
+    "amount": 240000,
+    "type": "Purchase",
+    "createdAt": "2026-04-29T06:08:34.996Z"
+  },
+  {
+    "id": "f1489a43-7c49-4162-99a9-bd2862bd684b",
+    "userId": "4baf2ab4-cb43-4f5c-be08-4b49fb112730",
+    "amount": 185000,
+    "type": "Purchase",
+    "createdAt": "2026-04-29T06:13:15.852Z"
+  },
+  {
+    "id": "a58eac4f-68cf-4762-be49-c3a375dc7876",
+    "userId": "4baf2ab4-cb43-4f5c-be08-4b49fb112730",
+    "amount": 35000,
+    "type": "Purchase",
+    "createdAt": "2026-04-29T06:15:37.044Z"
   }
 ]

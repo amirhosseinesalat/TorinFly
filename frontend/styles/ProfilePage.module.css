@@ -10,6 +10,7 @@
 .wrapper {
   margin-right: 50px;
   margin-top: 32px;
+  width: 821px;
 }
 
 .userInfo {
@@ -17,7 +18,6 @@
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  width: 821px;
 }
 .userInfo div {
   display: flex;
@@ -70,7 +70,7 @@
   margin-left: 20px;
 }
 .bankInfoHead {
-    margin-top: 5px !important;
+  margin-top: 5px !important;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

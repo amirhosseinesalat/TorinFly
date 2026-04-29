@@ -39,7 +39,7 @@
     "title": "تور مادرید",
     "fleetVehicle": "ship",
     "price": 240000,
-    "availableSeats": 11,
+    "availableSeats": 9,
     "capacity": 150,
     "insurance": false,
     "options": [
@@ -63,7 +63,7 @@
     "title": "سلیمانیه",
     "fleetVehicle": "train",
     "price": 35000,
-    "availableSeats": 37,
+    "availableSeats": 36,
     "capacity": 50,
     "insurance": true,
     "options": [
@@ -111,7 +111,7 @@
     "title": "تور مازندران",
     "fleetVehicle": "SUV",
     "price": 185000,
-    "availableSeats": 299,
+    "availableSeats": 298,
     "capacity": 350,
     "insurance": true,
     "options": [
@@ -135,7 +135,7 @@
     "title": "تور آفرود",
     "fleetVehicle": "SUV",
     "price": 35000,
-    "availableSeats": 22,
+    "availableSeats": 21,
     "capacity": 250,
     "insurance": true,
     "options": [
