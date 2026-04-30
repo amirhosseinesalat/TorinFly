@@ -16,6 +16,7 @@ function EditProfilePage() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [mobile, setMobile] = useState("");
+
   const router = useRouter();
 
   const {
@@ -73,8 +74,6 @@ function EditProfilePage() {
       month: "numeric",
       day: "numeric",
     }).format(new Date(data.date));
-
-
 
     const payload = {
       firstName: data.firstName,

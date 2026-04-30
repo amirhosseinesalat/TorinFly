@@ -14,7 +14,7 @@ function LocationSelect({ origins, destinations, setOrigin, setDestination }) {
 
   return (
     <div className={styles.inputLoc}>
-      {/* مبدا */}
+     
       <div className={styles.selectWrapper}>
         <CiLocationOn className={styles.icon} />
         <button

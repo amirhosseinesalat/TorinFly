@@ -13,7 +13,7 @@ function ReserveButton({ tourId }) {
       setLoading(true);
 
       const token = localStorage.getItem("token");
-      console.log("TOKEN:", token);
+
       const res = await fetch(`http://localhost:6500/basket/${tourId}`, {
         method: "PUT",
         headers: {

@@ -39,7 +39,7 @@
     "title": "تور مادرید",
     "fleetVehicle": "ship",
     "price": 240000,
-    "availableSeats": 9,
+    "availableSeats": 8,
     "capacity": 150,
     "insurance": false,
     "options": [
