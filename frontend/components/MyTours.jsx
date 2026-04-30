@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import UserMenu from "../modules/UserMenu";
 import styles from "../styles/MyTours.module.css";
-
+import { Oval } from "react-loader-spinner";
 function MyTours() {
   const [tour, setTour] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,7 +32,18 @@ function MyTours() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>در حال بارگذاری...</p>;
+  if (loading)
+    return (
+      <div className={styles.loading}>
+        <Oval
+          height={80}
+          width={80}
+          color="#28a745"
+          ariaLabel="oval-loading"
+          visible={true}
+        />
+      </div>
+    );
 
   return (
     <div className={styles.container}>
@@ -49,16 +60,16 @@ function MyTours() {
             >
               <h2>تور خریداری شده</h2>
               <p>
-                <strong>نام تور:</strong> {tour.tourTitle}
+                <strong>نام تور:</strong> {tour.title}
               </p>
               <p>
-                <strong>قیمت:</strong> {tour.tourPrice?.toLocaleString()} تومان
+                <strong>قیمت:</strong> {tour.price?.toLocaleString()} تومان
               </p>
-              <p>
+              {/* <p>
                 <strong>مدت:</strong> {tour.tourDuration} روز
-              </p>
+              </p> */}
               <hr />
-              <h3>اطلاعات مسافر</h3>
+              {/* <h3>اطلاعات مسافر</h3>
               <p>
                 <strong>نام:</strong> {tour.fullName}
               </p>
@@ -70,7 +81,7 @@ function MyTours() {
               </p>
               <p>
                 <strong>تاریخ تولد:</strong> {tour.birthDate}
-              </p>
+              </p> */}
             </div>
           ) : (
             <p>هیچ توری یافت نشد.</p>
