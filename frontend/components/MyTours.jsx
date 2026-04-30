@@ -4,9 +4,16 @@ import axios from "axios";
 import UserMenu from "../modules/UserMenu";
 import styles from "../styles/MyTours.module.css";
 import { Oval } from "react-loader-spinner";
+import { TiLocation } from "react-icons/ti";
+import { translateVehicle } from "../utils/vehicleTranslator";
+import { translateCity } from "../utils/cityTranslator";
+import { formatDate } from "../utils/formatDate";
 function MyTours() {
-  const [tour, setTour] = useState(null);
+  const [tour, setTour] = useState([]);
   const [loading, setLoading] = useState(true);
+  const date = new Date();
+
+  const end = new Date(tour.endDate);
 
   useEffect(() => {
     const storedTour = localStorage.getItem("myTour");
@@ -51,37 +58,41 @@ function MyTours() {
       <div className={styles.wrapper}>
         <div className={styles.myTours}>
           {tour ? (
-            <div
-              style={{
-                padding: "20px",
-                border: "1px solid #ccc",
-                borderRadius: "8px",
-              }}
-            >
-              <h2>تور خریداری شده</h2>
-              <p>
-                <strong>نام تور:</strong> {tour.title}
-              </p>
-              <p>
-                <strong>قیمت:</strong> {tour.price?.toLocaleString()} تومان
-              </p>
-              {/* <p>
-                <strong>مدت:</strong> {tour.tourDuration} روز
-              </p> */}
+            <div className={styles.showTours}>
+              <div className={styles.part1}>
+                <h3>
+                  {" "}
+                  <TiLocation style={{ fontSize: "15px" }} />
+                  {tour.title}
+                </h3>
+                <h4>سفر با {translateVehicle(tour.fleetVehicle)}</h4>
+                {end > date ? (
+                  <p className={styles.pending}>در حال برگزاری</p>
+                ) : (
+                  <p className={styles.finish}>به اتمام رسیده </p>
+                )}
+              </div>
+              <div className={styles.part2}>
+                <p>
+                  <strong>
+                    {translateCity(tour.origin.name)} به{" "}
+                    {translateCity(tour.destination.name)} :
+                    {formatDate(tour.startDate)}
+                  </strong>{" "}
+                </p>
+                <p>
+                  <strong>تاریخ برگشت: {formatDate(tour.endDate)}</strong>
+                </p>
+              </div>
               <hr />
-              {/* <h3>اطلاعات مسافر</h3>
-              <p>
-                <strong>نام:</strong> {tour.fullName}
-              </p>
-              <p>
-                <strong>کد ملی:</strong> {tour.nationalCode}
-              </p>
-              <p>
-                <strong>جنسیت:</strong> {tour.gender === "male" ? "مرد" : "زن"}
-              </p>
-              <p>
-                <strong>تاریخ تولد:</strong> {tour.birthDate}
-              </p> */}
+              <div className={styles.part3}>
+                <p>
+                  شماره تور : <strong>102095404</strong>
+                </p>
+                <p>
+                  مبلغ پرداخت شده:<strong>{tour.price} تومان</strong>
+                </p>
+              </div>
             </div>
           ) : (
             <p>هیچ توری یافت نشد.</p>
