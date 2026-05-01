@@ -1,0 +1,145 @@
+"use client";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { yupResolver } from "@hookform/resolvers/yup";
+import schema from "@/utils/LoginForm";
+import styles from "@/styles/AuthModal.module.css";
+import { IoClose } from "react-icons/io5";
+import axios from "axios";
+import { useRef } from "react";
+import toast from "react-hot-toast";
+
+function AuthModal({ onClose }) {
+  const [step, setStep] = useState("phone");
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [userPhone, setUserPhone] = useState("");
+  const inputRefs = useRef([]);
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (data) => {
+    try {
+      const res = await axios.post("http://localhost:6500/auth/send-otp", {
+        mobile: data.phone,
+      });
+      console.log(res.data);
+      setUserPhone(data.phone);
+      setStep("otp");
+    } catch (error) {
+      toast.error("کد تایید اشتباه است!");
+    }
+  };
+  const handleVerifyOtp = async () => {
+    if (otp.join("").length !== 6) {
+      toast.error("کد تایید کامل نیست");
+      return;
+    }
+    try {
+      const res = await axios.post("http://localhost:6500/auth/check-otp", {
+        mobile: userPhone,
+        code: otp.join(""),
+      });
+
+      localStorage.setItem("token", res.data.accessToken);
+      localStorage.setItem("refreshToken", res.data.refreshToken);
+      localStorage.setItem("phone", userPhone);
+      router.refresh();
+      onClose();
+    } catch (error) {
+      console.log(error);
+      const message = error.response?.data?.message || "کد تایید اشتباه است";
+      toast.error(message);
+    }
+  };
+
+  const handleOtpChange = (e, idx) => {
+    const val = e.target.value.replace(/[^0-9]/g, "");
+
+    if (!val) return;
+    const newOtp = [...otp];
+    newOtp[idx] = val;
+    setOtp(newOtp);
+
+    if (idx < otp.length - 1) {
+      inputRefs.current[idx + 1].focus();
+    }
+  };
+
+  const handleOtpBackspace = (e, idx) => {
+    if (e.key === "Backspace") {
+      if (otp[idx]) {
+        const newOtp = [...otp];
+        newOtp[idx] = "";
+        setOtp(newOtp);
+      } else if (idx > 0) {
+        inputRefs.current[idx - 1].focus();
+      }
+    }
+  };
+
+  return (
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <p onClick={onClose} style={{ cursor: "pointer", color: "black" }}>
+          <IoClose />
+        </p>
+
+        {step === "phone" && (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <h2>ورود به تورین فلای</h2>
+            <label>شماره موبایل</label>
+            <input
+              type="text"
+              placeholder="09123456789"
+              {...register("phone")}
+              className={styles.input}
+            />
+            {errors.phone && (
+              <p className={styles.error}>{errors.phone.message}</p>
+            )}
+            <button type="submit" className={styles.button}>
+              ارسال کد تایید
+            </button>
+          </form>
+        )}
+
+        {step === "otp" && (
+          <>
+            <h1 style={{ fontSize: "22PX" }}>کد تایید را وارد کنید.</h1>
+            <h4 style={{ fontSize: "16PX" }}>
+              کد تایید به شماره {userPhone} ارسال شد
+            </h4>
+            <div className={styles.otpContainer} dir="ltr">
+              {otp.map((num, idx) => (
+                <input
+                  key={idx}
+                  type="text"
+                  maxLength={1}
+                  value={num}
+                  ref={(el) => (inputRefs.current[idx] = el)}
+                  onChange={(e) => handleOtpChange(e, idx)}
+                  onKeyDown={(e) => handleOtpBackspace(e, idx)}
+                  className={styles.otpInput}
+                  autoFocus={activeIndex === idx}
+                />
+              ))}
+            </div>
+            <button className={styles.button} onClick={handleVerifyOtp}>
+              ورود به تورین فلای
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default AuthModal;

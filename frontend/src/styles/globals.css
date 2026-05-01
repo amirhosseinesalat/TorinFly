@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Yekan", sans-serif;
+}
+html,
+body {
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "Yekan";
+  src: url("@/public/fonts/YekanBakh-Regular.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
