@@ -30,8 +30,9 @@ function Header() {
   }, []);
   const deleteHandler = () => {
     localStorage.removeItem("phone");
+    localStorage.removeItem("token");
     toast.success("خروج با موفقیت...");
-    window.location.reload(false);
+    window.location.reload(true);
   };
   return (
     <>

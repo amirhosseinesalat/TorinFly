@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import UserMenu from "@/modules/ui/UserMenu";
 import styles from "@/styles/MyTours.module.css";
 import { Oval } from "react-loader-spinner";
@@ -8,9 +9,11 @@ import { TiLocation } from "react-icons/ti";
 import { translateVehicle } from "@/utils/vehicleTranslator";
 import { translateCity } from "@/utils/cityTranslator";
 import { formatDate } from "@/utils/formatDate";
+import toast from "react-hot-toast";
 function MyTours() {
   const [tour, setTour] = useState([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
   const date = new Date();
 
   const end = new Date(tour.endDate);
@@ -25,7 +28,11 @@ function MyTours() {
     }
 
     const token = localStorage.getItem("token");
-
+    if (!token) {
+      router.push("/");
+      toast.error("لطفا ابتدا وارد حساب کاربری شوید");
+      return;
+    }
     axios
       .get("http://localhost:6500/user/tours", {
         headers: { Authorization: `Bearer ${token}` },

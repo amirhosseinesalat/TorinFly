@@ -8,7 +8,7 @@ import { FaUser } from "react-icons/fa";
 import { Calendar, CalendarProvider } from "zaman";
 import { MdOutlineDateRange } from "react-icons/md";
 import { useRouter } from "next/navigation";
-
+import toast from "react-hot-toast";
 function CheckoutForm({ tour }) {
   const [calendarValue, setCalendarValue] = useState(null);
   const [open, setOpen] = useState(false);
@@ -33,7 +33,7 @@ function CheckoutForm({ tour }) {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      setErrorMessage("لطفاً ابتدا وارد حساب کاربری شوید.");
+      toast.error("لطفا ابتدا وارد حساب کاربری شوید");
       setLoading(false);
       return;
     }
@@ -71,10 +71,6 @@ function CheckoutForm({ tour }) {
         router.push("/profile");
       } else {
         console.error("Server Error:", responseData);
-
-        setErrorMessage(
-          `خطای سرور: ${responseData.message || "درخواست انجام نشد"}. اما اطلاعات در مرورگر ذخیره شد.`,
-        );
 
         localStorage.setItem("passengerData", JSON.stringify(payload));
 

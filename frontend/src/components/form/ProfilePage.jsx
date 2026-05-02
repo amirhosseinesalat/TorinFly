@@ -73,7 +73,7 @@ export default function ProfilePage() {
             <p>شماره موبایل: {user.mobile || "-"}</p>
             <p>ایمیل: {user.email || "-"}</p>
             <Link href="/edit-profile">
-              <button className={styles.add}>ویرایش</button>
+              <button className={styles.add}>افزودن</button>
             </Link>
           </div>
         </div>
