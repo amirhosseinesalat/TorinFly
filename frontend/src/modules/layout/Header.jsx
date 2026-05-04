@@ -28,9 +28,14 @@ function Header() {
       setPhone(savedPhone);
     }
   }, []);
+  
   const deleteHandler = () => {
     localStorage.removeItem("phone");
     localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("userProfile");
+    localStorage.removeItem("passengerData");
+    localStorage.removeItem("myTour");
     toast.success("خروج با موفقیت...");
     window.location.reload(true);
   };

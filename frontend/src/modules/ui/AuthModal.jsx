@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "@/utils/LoginForm";
 import styles from "@/styles/AuthModal.module.css";
@@ -16,7 +16,7 @@ function AuthModal({ onClose }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [userPhone, setUserPhone] = useState("");
   const inputRefs = useRef([]);
-  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -51,7 +51,7 @@ function AuthModal({ onClose }) {
       localStorage.setItem("token", res.data.accessToken);
       localStorage.setItem("refreshToken", res.data.refreshToken);
       localStorage.setItem("phone", userPhone);
-      router.refresh();
+      window.location.reload(true);
       onClose();
     } catch (error) {
       console.log(error);

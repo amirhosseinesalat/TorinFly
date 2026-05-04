@@ -1,8 +1,5 @@
 "use client";
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import passengerSchema from "@/utils/passengerForm";
 import styles from "@/styles/checkoutPage.module.css";
 import { FaUser } from "react-icons/fa";
 import { Calendar, CalendarProvider } from "zaman";
@@ -15,40 +12,46 @@ function CheckoutForm({ tour }) {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const router = useRouter();
-
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(passengerSchema),
+  const [formData, setFormData] = useState({
+    fullName: "",
+    gender: "",
+    nationalCode: "",
   });
 
-  const onSubmit = async (data) => {
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     setErrorMessage("");
 
     const token = localStorage.getItem("token");
-
     if (!token) {
       setErrorMessage("لطفاً ابتدا وارد حساب کاربری شوید.");
       setLoading(false);
       return;
     }
 
-    const persianDate = new Intl.DateTimeFormat("fa-IR", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-    }).format(new Date(data.date));
+    let birthDate = null;
+    if (calendarValue) {
+      const year = calendarValue.getFullYear();
+      const month = String(calendarValue.getMonth() + 1).padStart(2, "0");
+      const day = String(calendarValue.getDate()).padStart(2, "0");
+      birthDate = `${year}-${month}-${day}`;
+    }
 
     const payload = {
-      nationalCode: data.idCart,
-      fullName: data.username,
-      gender: data.gender,
-      birthDate: persianDate,
+      nationalCode: formData.nationalCode || null,
+      fullName: formData.fullName || null,
+      gender: formData.gender || null,
+      birthDate: birthDate,
     };
 
     console.log("Sending Payload:", payload);
@@ -67,12 +70,28 @@ function CheckoutForm({ tour }) {
 
       if (res.ok) {
         console.log("Success:", responseData);
+
         localStorage.setItem("passengerData", JSON.stringify(payload));
+
+        localStorage.setItem("myTour", JSON.stringify(tour));
+
+        localStorage.setItem(
+          "userProfile",
+          JSON.stringify({
+            username: formData.fullName,
+            nationalCode: formData.nationalCode,
+            gender: formData.gender,
+            birthDate: birthDate,
+          }),
+        );
+
         router.push("/profile");
       } else {
         console.error("Server Error:", responseData);
+        setErrorMessage(responseData.message || "خطا در ثبت سفارش");
 
         localStorage.setItem("passengerData", JSON.stringify(payload));
+        localStorage.setItem("myTour", JSON.stringify(tour));
 
         setTimeout(() => {
           router.push("/profile");
@@ -81,7 +100,9 @@ function CheckoutForm({ tour }) {
     } catch (error) {
       console.error("Network Error:", error);
       setErrorMessage("خطا در ارتباط با سرور.");
+
       localStorage.setItem("passengerData", JSON.stringify(payload));
+      localStorage.setItem("myTour", JSON.stringify(tour));
 
       setTimeout(() => {
         router.push("/profile");
@@ -110,61 +131,59 @@ function CheckoutForm({ tour }) {
         </div>
       )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.wrapper}>
+      <form onSubmit={handleSubmit} className={styles.wrapper}>
         <div className={styles.passengerDetails}>
           <h2>
             <FaUser /> مشخصات مسافر
           </h2>
 
-          <input placeholder="نام و نام خانوادگی" {...register("username")} />
-          {errors.username && <p>{errors.username.message}</p>}
+          <input
+            placeholder="نام و نام خانوادگی"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleChange}
+          />
 
-          <select {...register("gender")}>
+          <select name="gender" value={formData.gender} onChange={handleChange}>
             <option value="">انتخاب جنسیت</option>
             <option value="male">مرد</option>
             <option value="female">زن</option>
           </select>
-          {errors.gender && <p>{errors.gender.message}</p>}
 
-          <input placeholder="کد ملی" type="number" {...register("idCart")} />
-          {errors.idCart && <p>{errors.idCart.message}</p>}
-
-          <Controller
-            control={control}
-            name="date"
-            render={({ field }) => {
-              return (
-                <div className={styles.dateWrapper}>
-                  <div
-                    className={styles.dateInputBox}
-                    onClick={() => setOpen((prev) => !prev)}
-                  >
-                    <MdOutlineDateRange className={styles.dateIcon} />
-                    <span>
-                      {calendarValue
-                        ? calendarValue.toLocaleDateString("fa-IR")
-                        : "تاریخ تولد"}
-                    </span>
-                  </div>
-                  {open && (
-                    <div className={styles.calendarBox}>
-                      <CalendarProvider locale="fa">
-                        <Calendar
-                          onChange={(e) => {
-                            const selected = new Date(e.value);
-                            setCalendarValue(selected);
-                            field.onChange(selected);
-                            setOpen(false);
-                          }}
-                        />
-                      </CalendarProvider>
-                    </div>
-                  )}
-                </div>
-              );
-            }}
+          <input
+            placeholder="کد ملی"
+            type="number"
+            name="nationalCode"
+            value={formData.nationalCode}
+            onChange={handleChange}
           />
-          {errors.date && <p>{errors.date.message}</p>}
+
+          <div className={styles.dateWrapper}>
+            <div
+              className={styles.dateInputBox}
+              onClick={() => setOpen((prev) => !prev)}
+            >
+              <MdOutlineDateRange className={styles.dateIcon} />
+              <span>
+                {calendarValue
+                  ? calendarValue.toLocaleDateString("fa-IR")
+                  : "تاریخ تولد"}
+              </span>
+            </div>
+            {open && (
+              <div className={styles.calendarBox}>
+                <CalendarProvider locale="fa">
+                  <Calendar
+                    onChange={(e) => {
+                      const selected = new Date(e.value);
+                      setCalendarValue(selected);
+                      setOpen(false);
+                    }}
+                  />
+                </CalendarProvider>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className={styles.reserveBox}>

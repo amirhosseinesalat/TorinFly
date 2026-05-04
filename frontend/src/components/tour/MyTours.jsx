@@ -10,39 +10,44 @@ import { translateVehicle } from "@/utils/vehicleTranslator";
 import { translateCity } from "@/utils/cityTranslator";
 import { formatDate } from "@/utils/formatDate";
 import toast from "react-hot-toast";
+
 function MyTours() {
-  const [tour, setTour] = useState([]);
+  const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const date = new Date();
-
-  const end = new Date(tour.endDate);
 
   useEffect(() => {
-    const storedTour = localStorage.getItem("myTour");
-
-    if (storedTour) {
-      setTour(JSON.parse(storedTour));
-      setLoading(false);
-      return;
-    }
-
     const token = localStorage.getItem("token");
+
     if (!token) {
       router.push("/");
       toast.error("لطفا ابتدا وارد حساب کاربری شوید");
       return;
     }
+
     axios
       .get("http://localhost:6500/user/tours", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        if (res.data && res.data.length > 0) {
-          setTour(res.data[0]);
+        if (res.data) {
+          const data = Array.isArray(res.data) ? res.data : [res.data];
+          setTours(data);
+
+          if (data.length > 0) {
+            localStorage.removeItem("myTour");
+          }
         }
       })
-      .catch((err) => console.error("Error:", err))
+      .catch((err) => {
+        console.error("Error:", err);
+
+        const storedTour = localStorage.getItem("myTour");
+        if (storedTour) {
+          const parsed = JSON.parse(storedTour);
+          setTours(Array.isArray(parsed) ? parsed : [parsed]);
+        }
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -64,43 +69,49 @@ function MyTours() {
       <UserMenu />
       <div className={styles.wrapper}>
         <div className={styles.myTours}>
-          {tour ? (
-            <div className={styles.showTours}>
-              <div className={styles.part1}>
-                <h3>
-                  {" "}
-                  <TiLocation style={{ fontSize: "15px" }} />
-                  {tour.title}
-                </h3>
-                <h4>سفر با {translateVehicle(tour.fleetVehicle)}</h4>
-                {end > date ? (
-                  <p className={styles.pending}>در حال برگزاری</p>
-                ) : (
-                  <p className={styles.finish}>به اتمام رسیده </p>
-                )}
-              </div>
-              <div className={styles.part2}>
-                <p>
-                  <strong>
-                    {translateCity(tour.origin.name)} به{" "}
-                    {translateCity(tour.destination.name)} :
-                    {formatDate(tour.startDate)}
-                  </strong>{" "}
-                </p>
-                <p>
-                  <strong>تاریخ برگشت: {formatDate(tour.endDate)}</strong>
-                </p>
-              </div>
-              <hr />
-              <div className={styles.part3}>
-                <p>
-                  شماره تور : <strong>102095404</strong>
-                </p>
-                <p>
-                  مبلغ پرداخت شده:<strong>{tour.price} تومان</strong>
-                </p>
-              </div>
-            </div>
+          {tours.length > 0 ? (
+            tours.map((tour, index) => {
+              const date = new Date();
+              const end = new Date(tour.endDate);
+              return (
+                <div key={tour.id || index} className={styles.showTours}>
+                  <div className={styles.part1}>
+                    <h3>
+                      <TiLocation style={{ fontSize: "15px" }} />
+                      {tour.title}
+                    </h3>
+                    <h4>سفر با {translateVehicle(tour.fleetVehicle)}</h4>
+                    {end > date ? (
+                      <p className={styles.pending}>در حال برگزاری</p>
+                    ) : (
+                      <p className={styles.finish}>به اتمام رسیده</p>
+                    )}
+                  </div>
+                  <div className={styles.part2}>
+                    <p>
+                      <strong>
+                        {translateCity(tour.origin?.name)} به{" "}
+                        {translateCity(tour.destination?.name)} :
+                        {formatDate(tour.startDate)}
+                      </strong>
+                    </p>
+                    <p>
+                      <strong>تاریخ برگشت: {formatDate(tour.endDate)}</strong>
+                    </p>
+                  </div>
+                  <hr />
+                  <div className={styles.part3}>
+                    <p>
+                      شماره تور : <strong>{tour.id || "---"}</strong>
+                    </p>
+                    <p>
+                      مبلغ پرداخت شده:{" "}
+                      <strong>{tour.price?.toLocaleString()} تومان</strong>
+                    </p>
+                  </div>
+                </div>
+              );
+            })
           ) : (
             <p>هیچ توری یافت نشد.</p>
           )}

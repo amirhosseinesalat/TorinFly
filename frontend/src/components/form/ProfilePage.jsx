@@ -88,8 +88,7 @@ export default function ProfilePage() {
 
           <div className={styles.part1}>
             <p>
-              <strong> نام و نام خانواگی:</strong>{" "}
-              {user.firstName + " " + user.lastName || "-"}
+              <strong> نام و نام خانواگی:</strong> {user.username || "-"}
             </p>
             <p>
               <strong>کد ملی:</strong> {user.nationalCode || "-"}
