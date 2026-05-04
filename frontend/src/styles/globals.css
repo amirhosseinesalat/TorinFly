@@ -11,7 +11,7 @@ body {
 
 @font-face {
   font-family: "Yekan";
-  src: url("@/public/fonts/YekanBakh-Regular.ttf") format("truetype");
+  src: url("../../src/public/fonts/YekanBakh-Regular.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }

@@ -2,7 +2,6 @@ import UserMenu from "@/modules/ui/UserMenu";
 import styles from "@/styles/TruncatePage.module.css";
 import { formatDate } from "@/utils/formatDate";
 function TruncatePage() {
-  const persianDate = formatDate(new Date());
   return (
     <div className={styles.container}>
       <UserMenu />
@@ -15,7 +14,7 @@ function TruncatePage() {
             <th>شماره سفارش </th>
           </thead>
           <tbody>
-            <td>{persianDate}</td>
+            <td></td>
             <td>dlf</td>
             <td>dlf</td>
             <td>dlf</td>
