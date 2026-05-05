@@ -1,3 +1,5 @@
+/* UserMenu.module.css */
+
 .container {
   width: 250px;
   padding: 20px 0;
@@ -10,22 +12,23 @@
   display: block;
   padding: 12px 20px;
   text-decoration: none;
-  color: #333;
+  color: #666;
   border-radius: 8px;
+  border-right: 3px solid transparent;
   transition: all 0.2s ease;
   font-size: 15px;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
 .menuItem:hover {
-  background-color: #f5f5f5;
+  background-color: #e8f5e9;
 }
+
 
 .active {
-  background-color: #28a745;
-  color: #fff;
+  background-color: #e8f5e9;
+  color: #2e7d32;
   font-weight: 600;
-}
-
-.active:hover {
-  background-color: #218838;
+  border-right: 3px solid #28a745;
 }
