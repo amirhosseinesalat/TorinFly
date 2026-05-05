@@ -1,3 +1,4 @@
+
 "use client";
 import { useState } from "react";
 import styles from "@/styles/checkoutPage.module.css";
@@ -71,10 +72,12 @@ function CheckoutForm({ tour }) {
       if (res.ok) {
         console.log("Success:", responseData);
 
+   
         localStorage.setItem("passengerData", JSON.stringify(payload));
 
         localStorage.setItem("myTour", JSON.stringify(tour));
 
+        
         localStorage.setItem(
           "userProfile",
           JSON.stringify({
@@ -85,7 +88,26 @@ function CheckoutForm({ tour }) {
           }),
         );
 
-        router.push("/profile");
+        
+        const newTransaction = {
+          id: Date.now(),
+          date: new Date().toISOString(),
+          price: tour.price,
+          type: "ثبت نام در تور گردشگری",
+          orderNumber: `سفارش ${Math.floor(10000000 + Math.random() * 90000000)}`,
+          tourTitle: tour.title,
+        };
+
+        const existingTransactions = JSON.parse(
+          localStorage.getItem("transactions") || "[]",
+        );
+        existingTransactions.push(newTransaction);
+        localStorage.setItem(
+          "transactions",
+          JSON.stringify(existingTransactions),
+        );
+
+        router.push("/profile/transaction");
       } else {
         console.error("Server Error:", responseData);
         setErrorMessage(responseData.message || "خطا در ثبت سفارش");
@@ -94,7 +116,7 @@ function CheckoutForm({ tour }) {
         localStorage.setItem("myTour", JSON.stringify(tour));
 
         setTimeout(() => {
-          router.push("/profile");
+          router.push("/profile/transaction");
         }, 2000);
       }
     } catch (error) {
@@ -105,7 +127,7 @@ function CheckoutForm({ tour }) {
       localStorage.setItem("myTour", JSON.stringify(tour));
 
       setTimeout(() => {
-        router.push("/profile");
+        router.push("/profile/transaction");
       }, 2000);
     } finally {
       setLoading(false);

@@ -84,7 +84,7 @@
     "title": "هولر",
     "fleetVehicle": "SUV",
     "price": 105000,
-    "availableSeats": 20,
+    "availableSeats": 19,
     "insurance": false,
     "options": [
       "نهار و صبحانه",
@@ -107,7 +107,7 @@
     "title": "تور مازندران",
     "fleetVehicle": "SUV",
     "price": 185000,
-    "availableSeats": 300,
+    "availableSeats": 298,
     "insurance": true,
     "options": [
       "نهار و صبحانه",
@@ -130,7 +130,7 @@
     "title": "تور آفرود",
     "fleetVehicle": "Airplane",
     "price": 35000,
-    "availableSeats": 25,
+    "availableSeats": 24,
     "insurance": true,
     "options": [
       "نهار و صبحانه",

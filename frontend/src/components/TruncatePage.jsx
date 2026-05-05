@@ -1,9 +1,41 @@
+
+"use client";
 import UserMenu from "@/modules/ui/UserMenu";
 import styles from "@/styles/TruncatePage.module.css";
-import { formatDate } from "@/utils/formatDate";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 function TruncatePage() {
-  const persianDate = formatDate(new Date());
+  const [transactions, setTransactions] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/");
+      toast.error("لطفا ابتدا وارد حساب کاربری شوید");
+      return;
+    }
+
+   
+    const storedTransactions = JSON.parse(
+      localStorage.getItem("transactions") || "[]",
+    );
+    setTransactions(storedTransactions);
+  }, [router]);
+
+
+  const formatPersianDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleDateString("fa-IR", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -19,12 +51,25 @@ function TruncatePage() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{persianDate}</td>
-              <td>12,000,000</td>
-              <td>ثبت نام در تور گردشگری</td>
-              <td>سفارش 12054902</td>
-            </tr>
+            {transactions.length > 0 ? (
+              transactions.map((tx) => (
+                <tr key={tx.id}>
+                  <td>{formatPersianDate(tx.date)}</td>
+                  <td>{tx.price?.toLocaleString()}</td>
+                  <td>{tx.type}</td>
+                  <td>{tx.orderNumber}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="4"
+                  style={{ textAlign: "center", padding: "20px" }}
+                >
+                  هیچ تراکنشی یافت نشد
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
