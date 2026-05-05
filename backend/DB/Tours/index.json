@@ -7,15 +7,14 @@
     },
     "destination": {
       "id": "2",
-      "name": "Sananndaj"
+      "name": "Sanandaj"
     },
-    "startDate": "2025-10-01T00:00:00.000Z",
-    "endDate": "2025-10-05T00:00:00.000Z",
+    "startDate": "2025-10-05T00:00:00.000Z",
+    "endDate": "2025-10-10T00:00:00.000Z",
     "title": "تور کردستان",
-    "fleetVehicle": "bus",
+    "fleetVehicle": "Bus",
     "price": 105000,
-    "availableSeats": 23,
-    "capacity": 30,
+    "availableSeats": 25,
     "insurance": true,
     "options": [
       "راهنمای تور",
@@ -28,19 +27,18 @@
     "id": "b2c3d4e5-f678-90ab-cdef-234567890abc",
     "origin": {
       "id": "2",
-      "name": "Sananndaj"
+      "name": "Sanandaj"
     },
     "destination": {
       "id": "3",
       "name": "Madrid"
     },
-    "startDate": "2025-10-10T00:00:00.000Z",
-    "endDate": "2025-10-25T00:00:00.000Z",
+    "startDate": "2025-10-15T00:00:00.000Z",
+    "endDate": "2025-10-22T00:00:00.000Z",
     "title": "تور مادرید",
-    "fleetVehicle": "ship",
+    "fleetVehicle": "Van",
     "price": 240000,
-    "availableSeats": 5,
-    "capacity": 150,
+    "availableSeats": 15,
     "insurance": false,
     "options": [
       "راهنمای تور",
@@ -59,12 +57,11 @@
       "name": "Sulaymaniyah"
     },
     "startDate": "2025-11-01T00:00:00.000Z",
-    "endDate": "2025-11-10T00:00:00.000Z",
+    "endDate": "2025-11-07T00:00:00.000Z",
     "title": "سلیمانیه",
-    "fleetVehicle": "train",
+    "fleetVehicle": "SUV",
     "price": 35000,
-    "availableSeats": 36,
-    "capacity": 50,
+    "availableSeats": 40,
     "insurance": true,
     "options": [
       "نهار و صبحانه",
@@ -82,13 +79,12 @@
       "id": "6",
       "name": "Hewler"
     },
-    "startDate": "2025-11-15T00:00:00.000Z",
-    "endDate": "2025-11-22T00:00:00.000Z",
+    "startDate": "2025-11-10T00:00:00.000Z",
+    "endDate": "2025-11-15T00:00:00.000Z",
     "title": "هولر",
-    "fleetVehicle": "airplane",
+    "fleetVehicle": "SUV",
     "price": 105000,
-    "availableSeats": 19,
-    "capacity": 30,
+    "availableSeats": 20,
     "insurance": false,
     "options": [
       "نهار و صبحانه",
@@ -106,13 +102,12 @@
       "id": "7",
       "name": "Mazandaran"
     },
-    "startDate": "2025-12-01T00:00:00.000Z",
-    "endDate": "2025-12-15T00:00:00.000Z",
+    "startDate": "2025-11-20T00:00:00.000Z",
+    "endDate": "2025-11-28T00:00:00.000Z",
     "title": "تور مازندران",
     "fleetVehicle": "SUV",
     "price": 185000,
-    "availableSeats": 297,
-    "capacity": 350,
+    "availableSeats": 300,
     "insurance": true,
     "options": [
       "نهار و صبحانه",
@@ -128,15 +123,14 @@
     },
     "destination": {
       "id": "8",
-      "name": "Gilan"
+      "name": "Offroad"
     },
-    "startDate": "2026-01-10T00:00:00.000Z",
-    "endDate": "2026-01-16T00:00:00.000Z",
+    "startDate": "2025-12-05T00:00:00.000Z",
+    "endDate": "2025-12-10T00:00:00.000Z",
     "title": "تور آفرود",
-    "fleetVehicle": "SUV",
+    "fleetVehicle": "Airplane",
     "price": 35000,
-    "availableSeats": 20,
-    "capacity": 250,
+    "availableSeats": 25,
     "insurance": true,
     "options": [
       "نهار و صبحانه",
@@ -154,13 +148,12 @@
       "id": "9",
       "name": "Italy"
     },
-    "startDate": "2026-02-01T00:00:00.000Z",
-    "endDate": "2026-02-20T00:00:00.000Z",
+    "startDate": "2026-01-01T00:00:00.000Z",
+    "endDate": "2026-01-15T00:00:00.000Z",
     "title": "تور ایتالیا",
-    "fleetVehicle": "airplane",
+    "fleetVehicle": "Airplane",
     "price": 18000,
-    "availableSeats": 18,
-    "capacity": 200,
+    "availableSeats": 20,
     "insurance": true,
     "options": [
       "نهار و صبحانه",
