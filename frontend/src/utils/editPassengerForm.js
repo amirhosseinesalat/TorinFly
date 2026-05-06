@@ -20,7 +20,7 @@ const editPassengerSchema = yup.object().shape({
     .date()
     .typeError("تاریخ تولد الزامی است")
     .required("تاریخ تولد الزامی است"),
-
+  email: yup.string(),
   cartNumber: yup.string(),
 
   accountNumber: yup.string(),

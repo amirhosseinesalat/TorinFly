@@ -11,13 +11,17 @@
     "otpExpires": 1778070710755,
     "otpCode": "453347",
     "gender": "male",
-    "birthDate": "۱۴۰۵/۲/۱",
-    "nationalCode": "1220120210",
+    "birthDate": "۱۴۰۵/۲/۹",
+    "nationalCode": "1510122135",
     "payment": {
       "shaba_code": "",
       "debitCard_code": "",
       "accountIdentifier": ""
-    }
+    },
+    "fullName": "دینا مولوی",
+    "email": "sltamirhosein@gmail.com",
+    "firstName": "دینا مولوی",
+    "username": "دینا مولوی"
   },
   {
     "id": "b8860d0d-dcba-40f4-9f89-ecffa2e47156",

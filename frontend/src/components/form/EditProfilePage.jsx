@@ -76,8 +76,8 @@ function EditProfilePage() {
     }).format(new Date(data.date));
 
     const payload = {
-      firstName: data.firstName,
-      lastName: data.lastName,
+      username: data.username,
+      email: data.email,
       gender: data.gender,
       birthDate: persianDate,
       nationalCode: data.idCart,
@@ -133,8 +133,12 @@ function EditProfilePage() {
               <h4>شماره موبایل : {mobile || "در حال بارگذاری..."}</h4>
             </div>
             <div className={styles.email}>
-              <input type="email" placeholder="آدرس ایمیل" />
-              <button>تایید</button>
+              <input
+                type="email"
+                placeholder="آدرس ایمیل"
+                {...register("email")}
+              />
+            
             </div>
           </div>
         </div>
