@@ -30,7 +30,7 @@ function AuthModal({ onClose }) {
       const res = await axios.post("http://localhost:6500/auth/send-otp", {
         mobile: data.phone,
       });
-      console.log(res.data);
+      toast.success(res.data.code);
       setUserPhone(data.phone);
       setStep("otp");
     } catch (error) {
