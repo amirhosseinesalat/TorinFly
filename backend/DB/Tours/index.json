@@ -38,7 +38,7 @@
     "title": "تور مادرید",
     "fleetVehicle": "Van",
     "price": 240000,
-    "availableSeats": 15,
+    "availableSeats": 14,
     "insurance": false,
     "options": [
       "راهنمای تور",
@@ -84,7 +84,7 @@
     "title": "هولر",
     "fleetVehicle": "SUV",
     "price": 105000,
-    "availableSeats": 19,
+    "availableSeats": 18,
     "insurance": false,
     "options": [
       "نهار و صبحانه",
@@ -107,7 +107,7 @@
     "title": "تور مازندران",
     "fleetVehicle": "SUV",
     "price": 185000,
-    "availableSeats": 298,
+    "availableSeats": 297,
     "insurance": true,
     "options": [
       "نهار و صبحانه",

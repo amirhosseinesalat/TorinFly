@@ -1,7 +1,7 @@
 const cityMap = {
   Tehran: "تهران",
   Isfahan: "اصفهان",
-  Sananndaj: "سنندج",
+  Sanandaj: "سنندج",
   Madrid: "مادرید",
   Hewler: "هولر",
   Mazandaran: "مازندران",

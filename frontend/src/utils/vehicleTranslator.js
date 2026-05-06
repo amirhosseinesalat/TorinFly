@@ -4,7 +4,7 @@ export function translateVehicle(type) {
     bus: "اتوبوس",
     train: "قطار",
     ship: "کشتی",
-    van: "ون",
+    Van: "ون",
     SUV: "افرود",
   };
 

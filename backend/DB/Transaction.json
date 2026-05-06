@@ -33,5 +33,26 @@
     "amount": 35000,
     "type": "Purchase",
     "createdAt": "2026-05-06T05:56:47.210Z"
+  },
+  {
+    "id": "8d2702a0-693f-4b5e-9c65-d2a448141dea",
+    "userId": "f8dd8be6-8a2b-461f-8e17-3cf791ddf457",
+    "amount": 240000,
+    "type": "Purchase",
+    "createdAt": "2026-05-06T11:53:35.605Z"
+  },
+  {
+    "id": "88c091ea-e20b-4b2c-b6b6-2b4246eceafa",
+    "userId": "f8dd8be6-8a2b-461f-8e17-3cf791ddf457",
+    "amount": 105000,
+    "type": "Purchase",
+    "createdAt": "2026-05-06T12:09:26.993Z"
+  },
+  {
+    "id": "5bc13a9e-c5de-4e81-8e7c-b24868b96b9f",
+    "userId": "f8dd8be6-8a2b-461f-8e17-3cf791ddf457",
+    "amount": 185000,
+    "type": "Purchase",
+    "createdAt": "2026-05-06T12:22:14.526Z"
   }
 ]

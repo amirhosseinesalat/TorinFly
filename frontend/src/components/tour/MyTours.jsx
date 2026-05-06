@@ -18,11 +18,16 @@ function MyTours() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (!token) {
       router.push("/");
       toast.error("لطفا ابتدا وارد حساب کاربری شوید");
       return;
+    }
+
+    const storedTours = JSON.parse(localStorage.getItem("myTours") || "[]");
+    if (storedTours.length > 0) {
+      setTours(storedTours);
+      setLoading(false);
     }
 
     axios
@@ -34,22 +39,18 @@ function MyTours() {
           const data = Array.isArray(res.data) ? res.data : [res.data];
           setTours(data);
 
-          if (data.length > 0) {
-            localStorage.removeItem("myTour");
-          }
+          localStorage.setItem("myTours", JSON.stringify(data));
         }
       })
       .catch((err) => {
         console.error("Error:", err);
 
-        const storedTour = localStorage.getItem("myTour");
-        if (storedTour) {
-          const parsed = JSON.parse(storedTour);
-          setTours(Array.isArray(parsed) ? parsed : [parsed]);
+        if (storedTours.length > 0) {
+          setTours(storedTours);
         }
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [router]);
 
   if (loading)
     return (
