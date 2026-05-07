@@ -90,14 +90,12 @@ function MyTours() {
                   </div>
                   <div className={styles.part2}>
                     <p>
-                      <strong>
-                        {translateCity(tour.origin?.name)} به{" "}
-                        {translateCity(tour.destination?.name)} :
-                        {formatDate(tour.startDate)}
-                      </strong>
+                      {translateCity(tour.origin?.name)} به{" "}
+                      {translateCity(tour.destination?.name)} :
+                      <span>{formatDate(tour.startDate)}</span>
                     </p>
                     <p>
-                      <strong>تاریخ برگشت: {formatDate(tour.endDate)}</strong>
+                      تاریخ برگشت:<span>{formatDate(tour.endDate)}</span>{" "}
                     </p>
                   </div>
                   <hr />

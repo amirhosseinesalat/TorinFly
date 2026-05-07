@@ -58,8 +58,23 @@
     width: 100%;
     margin-right: 0px !important;
   }
-  .showTours{
+  .showTours {
     width: 95%;
     margin-right: 15px !important;
+  }
+  .part2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .part2 p {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .part3 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
