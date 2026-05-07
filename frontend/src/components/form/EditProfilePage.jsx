@@ -138,7 +138,6 @@ function EditProfilePage() {
                 placeholder="آدرس ایمیل"
                 {...register("email")}
               />
-            
             </div>
           </div>
         </div>

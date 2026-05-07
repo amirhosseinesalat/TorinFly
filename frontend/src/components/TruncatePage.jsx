@@ -1,4 +1,3 @@
-
 "use client";
 import UserMenu from "@/modules/ui/UserMenu";
 import styles from "@/styles/TruncatePage.module.css";
@@ -18,13 +17,11 @@ function TruncatePage() {
       return;
     }
 
-   
     const storedTransactions = JSON.parse(
       localStorage.getItem("transactions") || "[]",
     );
     setTransactions(storedTransactions);
   }, [router]);
-
 
   const formatPersianDate = (isoString) => {
     const date = new Date(isoString);
