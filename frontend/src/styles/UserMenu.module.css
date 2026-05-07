@@ -45,12 +45,13 @@
     background: none !important;
     color: none !important;
     white-space: nowrap;
+    font-size: 18px;
   }
 
   .active {
     background-color: #e8f5e9;
     color: #2e7d32;
-    font-weight: 600;
+    font-size: 18px;
     border-right: none;
     border-bottom: 3px solid #28a745 !important;
   }

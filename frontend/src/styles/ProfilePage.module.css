@@ -53,7 +53,6 @@
 .bankInfo div {
   display: flex;
   flex-direction: row;
-
   gap: 150px;
 }
 .add {
@@ -75,4 +74,42 @@
   flex-direction: row;
   justify-content: space-between;
   margin-left: 20px;
+}
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .wrapper {
+    width: 100%;
+    margin-right: 0;
+  }
+  .userInfo div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .userInfo div p {
+    font-size: 19px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space-between;
+  }
+  .add {
+    font-size: 18px;
+  }
+  .bankInfo div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .bankInfo div p {
+    font-size: 19px;
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: space-between;
+  }
 }

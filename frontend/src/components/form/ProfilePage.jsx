@@ -70,11 +70,19 @@ export default function ProfilePage() {
         <div className={styles.userInfo}>
           <h3>اطلاعات حساب کاربری</h3>
           <div>
-            <p>شماره موبایل: {user.mobile || "-"}</p>
-            <p>ایمیل: {user.email || "-"}</p>
-            <Link href="/edit-profile">
-              <button className={styles.add}>افزودن</button>
-            </Link>
+            <p>
+              شماره موبایل: <span>{user.mobile || "-"}</span>
+            </p>
+            <p>
+              ایمیل: <span>{user.email || "-"}</span>{" "}
+            </p>
+            {user.email ? (
+              <p></p>
+            ) : (
+              <Link href="/edit-profile">
+                <button className={styles.add}>افزودن</button>
+              </Link>
+            )}
           </div>
         </div>
 
@@ -110,16 +118,22 @@ export default function ProfilePage() {
         </div>
 
         <div className={styles.bankInfo}>
-          <div className={styles.bankInfoHead}>
+          <article className={styles.bankInfoHead}>
             <h3>اطلاعات حساب بانکی</h3>
             <Link href="/edit-profile">
               <button className={styles.add}>ویرایش اطلاعات</button>
             </Link>
-          </div>
+          </article>
           <div style={{ marginTop: "30px" }}>
-            <p>شماره شبا: {user.payment?.shaba_code || "-"}</p>
-            <p>شماره کارت: {user.payment?.debitCard_code || "-"}</p>
-            <p>شماره حساب: {user.payment?.accountIdentifier || "-"}</p>
+            <p>
+              شماره شبا: <span>{user.payment?.shaba_code || "-"}</span>
+            </p>
+            <p>
+              شماره کارت:<span> {user.payment?.debitCard_code || "-"}</span>
+            </p>
+            <p>
+              شماره حساب: <span>{user.payment?.accountIdentifier || "-"}</span>
+            </p>
           </div>
         </div>
       </div>
