@@ -1,3 +1,4 @@
+
 "use client";
 import UserMenu from "@/modules/ui/UserMenu";
 import styles from "@/styles/TruncatePage.module.css";
@@ -43,7 +44,7 @@ function TruncatePage() {
             <tr>
               <th>تاریخ و ساعت</th>
               <th>مبلغ(تومان)</th>
-              <th>نوع تراکنش</th>
+              <th className={styles.hideOnMobile}>نوع تراکنش</th>
               <th>شماره سفارش</th>
             </tr>
           </thead>
@@ -53,7 +54,7 @@ function TruncatePage() {
                 <tr key={tx.id}>
                   <td>{formatPersianDate(tx.date)}</td>
                   <td>{tx.price?.toLocaleString()}</td>
-                  <td>{tx.type}</td>
+                  <td className={styles.hideOnMobile}>{tx.type}</td>
                   <td>{tx.orderNumber}</td>
                 </tr>
               ))

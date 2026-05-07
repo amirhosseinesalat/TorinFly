@@ -1,3 +1,59 @@
+/* .container {
+  display: flex;
+  flex-direction: row;
+}
+
+.table {
+  margin: 35px;
+  width: 870px;
+  border: 1px solid #00000033;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background-color: rgba(243, 243, 243, 1);
+}
+
+.table thead th {
+  padding: 15px 20px;
+  text-align: right;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table tbody td {
+  padding: 15px 20px;
+  text-align: right;
+  border-bottom: 1px solid #f0f0f0;
+  color: #555;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background-color: #fafafa;
+}
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .table {
+    white-space: nowrap;
+    margin-right: 0px !important;
+    width: 100%;
+  }
+} */
+/* TruncatePage.module.css */
 
 .container {
   display: flex;
@@ -42,4 +98,22 @@
 
 .table tbody tr:hover {
   background-color: #fafafa;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .table {
+    margin-right: 0px !important;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .hideOnMobile {
+    display: none;
+  }
 }
