@@ -3,7 +3,7 @@ TorinFly
 TorinFly is a modern tour reservation web application developed with Next.js and React.
 Users can browse available tours, search based on destination and date, view complete tour details, authenticate with OTP login, and complete their reservation process.
 
- Features
+Features
 Responsive modern UI
 Tour search by:
 Origin
@@ -27,11 +27,11 @@ Axios
 React Hot Toast
 Zaman (Persian Calendar)
 React Icons
- Installation
+Installation
 
 Clone the repository:
-
-git clone https://github.com/your-username/torino-fly.git
+u
+git clone https://github.com/amirhosseinesalat/TorinFly
 
 Install dependencies:
 
@@ -40,28 +40,28 @@ npm install
 Run development server:
 
 npm run dev
-⚙️ Environment Variables
+Environment Variables
 
 Create a .env.local file in the root directory:
 
 NEXT_PUBLIC_BASE_URL=http://localhost:6500
 
- Main Pages
+Main Pages
 Home Page
 Tour Details
 Checkout
 Profile
-Authentication 
+Authentication
 My-tours
 404 Page
 Error page
- Responsive Design
+Responsive Design
 
 The project is fully responsive and optimized for:
 
 Mobile
 Tablet
 Desktop
- Developer
+Developer
 
 Developed as a frontend bootcamp final project using modern React ecosystem and Next.js App Router.
