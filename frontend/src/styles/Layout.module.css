@@ -109,7 +109,7 @@
 }
 
 .menudrop {
-  position: relative;
+  position: absolute;
   top: calc(100% + 10px);
   right: 0;
   max-width: 90vw;
