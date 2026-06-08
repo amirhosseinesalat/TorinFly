@@ -130,7 +130,7 @@
     "title": "تور آفرود",
     "fleetVehicle": "Airplane",
     "price": 35000,
-    "availableSeats": 24,
+    "availableSeats": 23,
     "insurance": true,
     "options": [
       "نهار و صبحانه",

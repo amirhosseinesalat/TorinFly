@@ -1,4 +1,3 @@
-
 "use client";
 import { useState } from "react";
 import styles from "@/styles/checkoutPage.module.css";
@@ -32,7 +31,16 @@ function CheckoutForm({ tour }) {
     e.preventDefault();
     setLoading(true);
     setErrorMessage("");
-
+    if (
+      !formData.fullName ||
+      !formData.gender ||
+      !formData.nationalCode ||
+      !calendarValue
+    ) {
+      setErrorMessage("لطفاً همه فیلدها را پر کنید.");
+      setLoading(false);
+      return;
+    }
     const token = localStorage.getItem("token");
     if (!token) {
       setErrorMessage("لطفاً ابتدا وارد حساب کاربری شوید.");
@@ -72,12 +80,10 @@ function CheckoutForm({ tour }) {
       if (res.ok) {
         console.log("Success:", responseData);
 
-   
         localStorage.setItem("passengerData", JSON.stringify(payload));
 
         localStorage.setItem("myTour", JSON.stringify(tour));
 
-        
         localStorage.setItem(
           "userProfile",
           JSON.stringify({
@@ -88,7 +94,6 @@ function CheckoutForm({ tour }) {
           }),
         );
 
-        
         const newTransaction = {
           id: Date.now(),
           date: new Date().toISOString(),
